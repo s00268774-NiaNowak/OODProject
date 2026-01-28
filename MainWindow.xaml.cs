@@ -90,65 +90,18 @@ namespace ProjectV2
         }
         //Element Buttons
         #region Element Buttons
-
-        private void BtnPyro_Click(object sender, RoutedEventArgs e)
+        private void Btn_Click(object sender, RoutedEventArgs e)
         {
+            //determine what button was clicked
+            Button selectedButton = sender as Button;
+            if (selectedButton != null) {
+                string elementContent = selectedButton.Content.ToString();
+                AssignElementToTypeButton(elementContent);
+            }
+
             AssignElementToTypeButton("Pyro");
         }
-
-        private void BtnAqua_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Aqua");
-        }
-        private void BtnFlora_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Flora");
-        }
-
-        private void BtnTerra_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Terra");
-        }
-
-        private void BtnVephyr_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Zephyr");
-        }
-
-        private void BtnGlacial_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Glacial");
-        }
-
-        private void BtnNoxious_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Noxious");
-        }
-
-        private void BtnLumen_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Lumen");
-        }
-
-        private void BtnElectro_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Electro");
-        }
-
-        private void BtnMetal_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Metal");
-        }
-
-        private void BtnSpirit_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Spirit");
-        }
-
-        private void BtnVita_Click(object sender, RoutedEventArgs e)
-        {
-            AssignElementToTypeButton("Vita");
-        }
+        
         #endregion Element Buttons 
         //Type Buttons
         #region Type Buttons
