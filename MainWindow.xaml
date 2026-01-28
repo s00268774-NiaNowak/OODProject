@@ -10,7 +10,7 @@
         <TabItem>
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Element Selector" FontSize="16" Foreground="Black" Margin="0,0,0,0"/>
+                    <TextBlock Text="Type Defense" FontSize="16" Foreground="Black" Margin="0,0,0,0"/>
                 </StackPanel>
             </TabItem.Header>
             <Grid Loaded="Grid_Loaded">
@@ -30,14 +30,26 @@
                 <Button x:Name="BtnLumen" Content="Lumen" HorizontalAlignment="Left" Margin="150,171,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FFF8FBC1" BorderBrush="#FFF0F3AB" Foreground="Black" Click="BtnLumen_Click"/>
                 <Button x:Name="BtnSpirit" Content="Spirit" HorizontalAlignment="Left" Margin="30,264,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FFA93AB7" BorderBrush="#FF802C8A" Foreground="Black" Click="BtnSpirit_Click"/>
                 <Button x:Name="BtnVita" Content="Vita" HorizontalAlignment="Left" Margin="150,264,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FF0AFDAA" BorderBrush="#FF07D28D" Foreground="Black" Click="BtnVita_Click"/>
-                <Button x:Name="BtnType1" Content="Type" HorizontalAlignment="Left" Margin="273,323,0,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType1_Click" Height="32" Width="71"/>
-                <Button x:Name="BtnType2" Content="Type" HorizontalAlignment="Left" Margin="366,323,0,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType2_Click" Grid.ColumnSpan="2" Height="32" Width="74"/>
-                <Button x:Name="BtnType3" Content="Type" HorizontalAlignment="Left" Margin="52,323,0,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType3_Click" Grid.Column="1" Height="32" Width="74"/>
-                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="111,42,35,116" BorderBrush="Black" Background="#FFECECEC" Grid.Column="1"/>
+                <Button x:Name="BtnType1" Content="Type" Margin="30,311,279,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType1_Click" Height="32"/>
+                <Button x:Name="BtnType2" Content="Type" HorizontalAlignment="Left" Margin="126,311,0,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType2_Click" Height="32" Width="86"/>
+                <Button x:Name="BtnType3" Content="Type" Margin="217,311,92,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType3_Click" Height="32"/>
+                <ListBox x:Name="TxtResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="97,10,36,107" BorderBrush="Black" Background="#FFECECEC" Grid.Column="1" Loaded="TxtResults_Loaded"/>
+                <Button x:Name="BtnCalculate" Content="Calculate" HorizontalAlignment="Left" Margin="274,301,0,0" VerticalAlignment="Top" Click="BtnCalculate_Click" Grid.Column="1"/>
 
             </Grid>
 
         </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Type Offense" FontSize="16" Foreground="Black" Margin="0,0,0,0"/>
+                </StackPanel>
+            </TabItem.Header>
+            <Grid>
+
+            </Grid>
+        </TabItem>
+
         <TabItem>
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
