@@ -34,12 +34,12 @@ namespace ProjectV2
         static readonly (float super, float resist, float neutral)[] DefenderBySlot =
         {
             (2.00f, 0.50f, 1.00f),
-            (1.50f, 0.66f, 1.00f),
-            (1.33f, 0.75f, 1.00f)
+            (1.50f, (2.0f / 3.0f), 1.00f),
+            ((4.0f/3.0f), 0.75f, 1.00f)
         };
         static void LoadTypeDatabase()
         {
-            typeChart[0] = new TypeEffectiveness(new[] { 2, 4, 5, 7, 8 }, new[] { 1, 3, 11 });
+            typeChart[0] = new TypeEffectiveness(new[] { 2, 4, 5, 7, 8 }, new[] {0, 1, 3, 11 });
             typeChart[1] = new TypeEffectiveness(new[] { 0, 3, 9 }, new[] { 2, 5, 6, 11 });
             typeChart[2] = new TypeEffectiveness(new[] { 1, 3, 6 }, new[] { 0, 8, 7, 11 });
             typeChart[3] = new TypeEffectiveness(new[] { 0, 6, 5, 8, 9, 10 }, new[] { 2, 3, 4, 11 });
@@ -56,7 +56,6 @@ namespace ProjectV2
         static float DefenderMultiplier(TypeEffectiveness rules, int defenderType, int slot)
         {
             if (defenderType < 0) return 1.0f;
-
             var (super, resist, neutral) = DefenderBySlot[slot];
 
             if (rules.IsStrongAgainst(defenderType)) return super;
@@ -98,8 +97,6 @@ namespace ProjectV2
                 string elementContent = selectedButton.Content.ToString();
                 AssignElementToTypeButton(elementContent);
             }
-
-            AssignElementToTypeButton("Pyro");
         }
         
         #endregion Element Buttons 
@@ -199,10 +196,11 @@ namespace ProjectV2
                 multiplier *= DefenderMultiplier(rules, type2, 1);
                 multiplier *= DefenderMultiplier(rules, type3, 2);
                 // Only display if the multiplier is not neutral
-                if (multiplier != 1.0f)
+                if (multiplier != 0.01f)
                 {
                     string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
                     TxtResults.Items.Add(result);
+                    
                 }
             }
 

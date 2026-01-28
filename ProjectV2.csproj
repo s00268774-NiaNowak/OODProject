@@ -9,11 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="temp.jpg" />
+    <None Remove="test.jpg" />
+    <None Remove="test2.png" />
+    <None Remove="test5.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="TypeChart\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="temp.jpg" />
+    <Resource Include="test.jpg" />
+    <Resource Include="test2.png" />
+    <Resource Include="test5.png" />
   </ItemGroup>
 
 </Project>
