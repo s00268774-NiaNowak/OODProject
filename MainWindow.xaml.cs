@@ -195,13 +195,10 @@ namespace ProjectV2
                 multiplier *= DefenderMultiplier(rules, type1, 0);
                 multiplier *= DefenderMultiplier(rules, type2, 1);
                 multiplier *= DefenderMultiplier(rules, type3, 2);
-                // Only display if the multiplier is not neutral
-                if (multiplier != 0.01f)
-                {
                     string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
                     TxtResults.Items.Add(result);
                     
-                }
+                
             }
 
 
