@@ -29,8 +29,8 @@
                 <Button x:Name="BtnType1" Content="Type" Margin="30,311,684,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType1_Click" Height="32"/>
                 <Button x:Name="BtnType2" Content="Type" HorizontalAlignment="Left" Margin="126,311,0,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType2_Click" Height="32" Width="86"/>
                 <Button x:Name="BtnType3" Content="Type" Margin="217,311,498,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType3_Click" Height="32"/>
-                <Button x:Name="BtnCalculate" Content="Calculate" HorizontalAlignment="Left" Margin="674,311,0,0" VerticalAlignment="Top" Click="BtnCalculate_Click"/>
-                <ListBox x:Name="TxtResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="420,10,36,107" BorderBrush="Black" Background="#FFECECEC" Loaded="TxtResults_Loaded"/>
+                <Button x:Name="BtnCalculate" Content="Calculate" HorizontalAlignment="Left" Margin="300,32,0,0" VerticalAlignment="Top" Click="BtnCalculate_Click"/>
+                <ListBox x:Name="TxtResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="420,10,36,10" BorderBrush="Black" Background="#FFECECEC" Loaded="TxtResults_Loaded"/>
 
             </Grid>
 
@@ -57,6 +57,9 @@
                 <Button x:Name="BtnType1_2" Content="Type" Margin="30,311,684,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType1_Click" Height="32"/>
                 <Button x:Name="BtnType2_2" Content="Type" HorizontalAlignment="Left" Margin="126,311,0,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType2_Click" Height="32" Width="86"/>
                 <Button x:Name="BtnType3_2" Content="Type" Margin="217,311,498,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType3_Click" Height="32"/>
+                <ListBox x:Name="TxtOffense" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="420,10,36,10" BorderBrush="Black" Background="#FFECECEC" Loaded="TxtResults_Loaded"/>
+                <RadioButton x:Name="STABrad" Content="STAB Multiplier" HorizontalAlignment="Left" Margin="260,33,0,0" VerticalAlignment="Top" Checked="STAB_Checked"/>
+                <Button x:Name="BtnCalculateOffense" Content="Calculate" HorizontalAlignment="Left" Margin="280,242,0,0" VerticalAlignment="Top" Click="BtnCalculateOffense_Click"/>
 
             </Grid>
         </TabItem>

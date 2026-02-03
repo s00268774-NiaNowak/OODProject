@@ -230,8 +230,6 @@ namespace ProjectV2
                 multiplier *= DefenderMultiplier(rules, type3, 2);
                     string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
                     TxtResults.Items.Add(result);
-                    
-                
             }
 
 
@@ -241,6 +239,32 @@ namespace ProjectV2
         private void TxtResults_Loaded(object sender, RoutedEventArgs e)
         {
             TxtResults.Items.Clear();
+        }
+
+        private void STAB_Checked(object sender, RoutedEventArgs e)
+        {
+            //sets the STAB multipler of x1.5, x1.25, x1.12
+
+        }
+
+        private void BtnCalculateOffense_Click(object sender, RoutedEventArgs e)
+        {
+            // Load the type database
+            LoadTypeDatabase();
+            // Get selected types from buttons
+            int type1 = GetTypeIndex(BtnType1_2.Content.ToString());
+            int type2 = GetTypeIndex(BtnType2_2.Content.ToString());
+            int type3 = GetTypeIndex(BtnType3_2.Content.ToString());
+            // Clear previous results
+            TxtOffense.Items.Clear();
+
+            //foreach attacker type picked, calculate how much damage they do to each type in the type chart
+            foreach (var atackerTyper in typeChart.Keys)
+            {
+                var rules1 = typeChart[atackerTyper];
+                float multiplier = 1.0f;
+
+            }
         }
     }
 }
