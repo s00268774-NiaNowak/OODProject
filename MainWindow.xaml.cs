@@ -86,6 +86,22 @@ namespace ProjectV2
                 BtnType3.Visibility = Visibility.Visible;
             }
 
+            if (BtnType1_2.Content.ToString() == "Type")
+            {
+                BtnType1_2.Content = element;
+                BtnType1_2.Visibility = Visibility.Visible;
+            }
+            else if (BtnType2_2.Content.ToString() == "Type" && BtnType1_2.Content.ToString() != element)
+            {
+                BtnType2_2.Content = element;
+                BtnType2_2.Visibility = Visibility.Visible;
+            }
+            else if (BtnType3_2.Content.ToString() == "Type" && BtnType1_2.Content.ToString() != element && BtnType2_2.Content.ToString() != element)
+            {
+                BtnType3_2.Content = element;
+                BtnType3_2.Visibility = Visibility.Visible;
+            }
+
         }
         //Element Buttons
         #region Element Buttons
@@ -110,18 +126,26 @@ namespace ProjectV2
             BtnType2.Content = BtnType3.Content;
             BtnType3.Content = "Type";
 
+            BtnType1_2.Content = BtnType2_2.Content;
+            BtnType2_2.Content = BtnType3_2.Content;
+            BtnType3_2.Content = "Type";
+
+
             //set visibility
-            if (BtnType2.Content.ToString() == "Type")
+            if (BtnType2.Content.ToString() == "Type" || BtnType2_2.Content.ToString() == "Type")
             {
                 BtnType2.Visibility = Visibility.Hidden;
+                BtnType2_2.Visibility = Visibility.Hidden;
             }
-            if (BtnType3.Content.ToString() == "Type")
+            if (BtnType3.Content.ToString() == "Type" || BtnType3_2.Content.ToString() == "Type")
             {
                 BtnType3.Visibility = Visibility.Hidden;
+                BtnType3_2.Visibility = Visibility.Hidden;
             }
-            if (BtnType1.Content.ToString() == "Type")
+            if (BtnType1.Content.ToString() == "Type" || BtnType1_2.Content.ToString() == "Type")
             {
                 BtnType1.Visibility = Visibility.Hidden;
+                BtnType1_2.Visibility = Visibility.Hidden;
             }
 
         }
@@ -130,14 +154,21 @@ namespace ProjectV2
         {
             BtnType2.Content = BtnType3.Content;
             BtnType3.Content = "Type";
+
+            BtnType2_2.Content = BtnType3_2.Content;
+            BtnType3_2.Content = "Type";
+
+
             //set visibility
-            if (BtnType3.Content.ToString() == "Type")
+            if (BtnType3.Content.ToString() == "Type" || BtnType3_2.Content.ToString() == "Type")
             {
                 BtnType3.Visibility = Visibility.Hidden;
+                BtnType3_2.Visibility= Visibility.Hidden;
             }
-            if (BtnType2.Content.ToString() == "Type")
+            if (BtnType2.Content.ToString() == "Type" || BtnType2_2.Content.ToString() == "Type")
             {
                 BtnType2.Visibility = Visibility.Hidden;
+                BtnType2_2.Visibility = Visibility.Hidden;
             }
 
         }
@@ -146,18 +177,20 @@ namespace ProjectV2
         {
             BtnType3.Content = "Type";
             BtnType3.Visibility = Visibility.Hidden;
+            BtnType3_2.Content = "Type";
+            BtnType3_2.Visibility = Visibility.Hidden;
 
         }
         #endregion Type Buttons
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             //set all Type Buttons to invisible on load
-            BtnType1.Visibility = Visibility.Hidden;
-            BtnType1.Content = "Type";
-            BtnType2.Visibility = Visibility.Hidden;
-            BtnType2.Content = "Type";
-            BtnType3.Visibility = Visibility.Hidden;
-            BtnType3.Content = "Type";
+            BtnType1.Visibility = Visibility.Hidden; BtnType1_2.Visibility= Visibility.Hidden;
+            BtnType1.Content = "Type";               BtnType1_2.Content = "Type";
+            BtnType2.Visibility = Visibility.Hidden; BtnType2_2.Visibility = Visibility.Hidden;
+            BtnType2.Content = "Type";               BtnType2_2.Content = "Type";
+            BtnType3.Visibility = Visibility.Hidden; BtnType3_2.Visibility = Visibility.Hidden;
+            BtnType3.Content = "Type";               BtnType3_2.Content = "Type";
         }
 
         //Match the typebutton content to the typeNames index
