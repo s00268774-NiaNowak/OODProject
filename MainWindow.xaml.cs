@@ -29,6 +29,7 @@ namespace ProjectV2
         private static readonly Dictionary<int, TypeEffectiveness> dictionary = new();
         static readonly Dictionary<int, TypeEffectiveness> typeChart = dictionary;
 
+        static readonly float[] AttackerStabBySlot = { 1.50f, 1.25f, 1.12f };
 
         // Effectiveness multipliers by defender slot
         static readonly (float super, float resist, float neutral)[] DefenderBySlot =
@@ -39,10 +40,10 @@ namespace ProjectV2
         };
         static void LoadTypeDatabase()
         {
-            typeChart[0] = new TypeEffectiveness(new[] { 2, 4, 5, 7, 8 }, new[] {0, 1, 3, 11 });
+            typeChart[0] = new TypeEffectiveness(new[] { 2, 4, 5, 7, 8 }, new[] { 1, 3, 11 });
             typeChart[1] = new TypeEffectiveness(new[] { 0, 3, 9 }, new[] { 2, 5, 6, 11 });
             typeChart[2] = new TypeEffectiveness(new[] { 1, 3, 6 }, new[] { 0, 8, 7, 11 });
-            typeChart[3] = new TypeEffectiveness(new[] { 0, 6, 5, 8, 9, 10 }, new[] { 2, 3, 4, 11 });
+            typeChart[3] = new TypeEffectiveness(new[] { 0, 6, 5, 8, 9, 10 }, new[] { 2, 3, 4, 11 });//terra
             typeChart[4] = new TypeEffectiveness(new[] { 0, 3, 8, 9 }, new[] { 10 });
             typeChart[5] = new TypeEffectiveness(new[] { 0, 1, 2, 3, 4, 9 }, new[] { 7, 10 });
             typeChart[6] = new TypeEffectiveness(new[] { 1, 4, 7 }, new[] { 3, 5, 6 });
@@ -109,12 +110,13 @@ namespace ProjectV2
         {
             //determine what button was clicked
             Button selectedButton = sender as Button;
-            if (selectedButton != null) {
+            if (selectedButton != null)
+            {
                 string elementContent = selectedButton.Content.ToString();
                 AssignElementToTypeButton(elementContent);
             }
         }
-        
+
         #endregion Element Buttons 
         //Type Buttons
         #region Type Buttons
@@ -163,7 +165,7 @@ namespace ProjectV2
             if (BtnType3.Content.ToString() == "Type" || BtnType3_2.Content.ToString() == "Type")
             {
                 BtnType3.Visibility = Visibility.Hidden;
-                BtnType3_2.Visibility= Visibility.Hidden;
+                BtnType3_2.Visibility = Visibility.Hidden;
             }
             if (BtnType2.Content.ToString() == "Type" || BtnType2_2.Content.ToString() == "Type")
             {
@@ -185,12 +187,12 @@ namespace ProjectV2
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             //set all Type Buttons to invisible on load
-            BtnType1.Visibility = Visibility.Hidden; BtnType1_2.Visibility= Visibility.Hidden;
-            BtnType1.Content = "Type";               BtnType1_2.Content = "Type";
+            BtnType1.Visibility = Visibility.Hidden; BtnType1_2.Visibility = Visibility.Hidden;
+            BtnType1.Content = "Type"; BtnType1_2.Content = "Type";
             BtnType2.Visibility = Visibility.Hidden; BtnType2_2.Visibility = Visibility.Hidden;
-            BtnType2.Content = "Type";               BtnType2_2.Content = "Type";
+            BtnType2.Content = "Type"; BtnType2_2.Content = "Type";
             BtnType3.Visibility = Visibility.Hidden; BtnType3_2.Visibility = Visibility.Hidden;
-            BtnType3.Content = "Type";               BtnType3_2.Content = "Type";
+            BtnType3.Content = "Type"; BtnType3_2.Content = "Type";
         }
 
         //Match the typebutton content to the typeNames index
@@ -228,11 +230,9 @@ namespace ProjectV2
                 multiplier *= DefenderMultiplier(rules, type1, 0);
                 multiplier *= DefenderMultiplier(rules, type2, 1);
                 multiplier *= DefenderMultiplier(rules, type3, 2);
-                    string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
-                    TxtResults.Items.Add(result);
+                string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
+                TxtResults.Items.Add(result);
             }
-
-
         }
 
 
@@ -241,30 +241,72 @@ namespace ProjectV2
             TxtResults.Items.Clear();
         }
 
-        private void STAB_Checked(object sender, RoutedEventArgs e)
-        {
-            //sets the STAB multipler of x1.5, x1.25, x1.12
 
-        }
 
         private void BtnCalculateOffense_Click(object sender, RoutedEventArgs e)
         {
             // Load the type database
             LoadTypeDatabase();
-            // Get selected types from buttons
-            int type1 = GetTypeIndex(BtnType1_2.Content.ToString());
-            int type2 = GetTypeIndex(BtnType2_2.Content.ToString());
-            int type3 = GetTypeIndex(BtnType3_2.Content.ToString());
             // Clear previous results
             TxtOffense.Items.Clear();
 
-            //foreach attacker type picked, calculate how much damage they do to each type in the type chart
-            foreach (var atackerTyper in typeChart.Keys)
-            {
-                var rules1 = typeChart[atackerTyper];
-                float multiplier = 1.0f;
 
+            int type1 = GetTypeIndex(BtnType1_2.Content.ToString());
+            int type2 = GetTypeIndex(BtnType2_2.Content.ToString());
+            int type3 = GetTypeIndex(BtnType3_2.Content.ToString());
+            if (type1 != null)
+            {
+                
+                var effectivenessDictionary = typeChart[type1];
+                int[] strengths = effectivenessDictionary.StrongAgainst;
+                int[] resists = effectivenessDictionary.WeakAgainst;
+
+                //loop through each type
+                foreach (string typ in TypeNames)
+                {
+                    //for each type check multiplier versus selected
+
+                    int currentType = GetTypeIndex(typ);
+
+                    float multiplier = 1;
+
+                    //option 1 - it's in the super effective category
+                    if (strengths.Contains(currentType))
+                        multiplier = 2;
+
+                    //option 3 - it resist(weak)
+                    else if (resists.Contains(currentType))
+                        multiplier = 0.5f;
+
+                    string result = $"{typ}: x{multiplier:F2}";
+                    TxtOffense.Items.Add(result);
+
+                }
             }
+
+            
+
+
+
+
+
+
+            ////foreach attacker type picked, calculate how much damage they do to each type in the type chart
+            //foreach (var attackerType in typeChart.Keys)
+            //{
+            //    var rules = typeChart[attackerType];
+            //    float multiplier = 1.0f;
+            //    //for loop of it attacking every type
+
+
+            //    //for (int i = 0; i < TypeNames.Length; i++)
+            //    //{
+
+            //    //    multiplier *= DefenderMultiplier(rules,i, 0);
+            //    //}
+            //    string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
+            //    TxtOffense.Items.Add(result);
+            //}
         }
     }
 }

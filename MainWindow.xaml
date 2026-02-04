@@ -58,7 +58,6 @@
                 <Button x:Name="BtnType2_2" Content="Type" HorizontalAlignment="Left" Margin="126,311,0,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType2_Click" Height="32" Width="86"/>
                 <Button x:Name="BtnType3_2" Content="Type" Margin="217,311,498,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType3_Click" Height="32"/>
                 <ListBox x:Name="TxtOffense" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="420,10,36,10" BorderBrush="Black" Background="#FFECECEC" Loaded="TxtResults_Loaded"/>
-                <RadioButton x:Name="STABrad" Content="STAB Multiplier" HorizontalAlignment="Left" Margin="260,33,0,0" VerticalAlignment="Top" Checked="STAB_Checked"/>
                 <Button x:Name="BtnCalculateOffense" Content="Calculate" HorizontalAlignment="Left" Margin="280,242,0,0" VerticalAlignment="Top" Click="BtnCalculateOffense_Click"/>
 
             </Grid>
@@ -74,19 +73,18 @@
                 <Frame x:Name="TypeChartFrame" NavigationUIVisibility="Hidden"/>
                 <Button x:Name="SpikesMain" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Foreground="Black">
                     <Button.Background>
-                        <ImageBrush ImageSource="/spikes.jpg"/>
+                        <ImageBrush ImageSource="/content/spikes.jpg"/>
                     </Button.Background>
                 </Button>
                 <Button x:Name="TendrilsMain" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Content="Button" Foreground="Black">
                     <Button.Background>
-                        <ImageBrush ImageSource="/Vines.jpg"/>
+                        <ImageBrush ImageSource="/content/Vines.jpg"/>
                     </Button.Background>
                 </Button>
                 <Button x:Name="WeatherMain" Content="Button" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Foreground="Black">
                     <Button.Background>
-                        <ImageBrush ImageSource="/Sun.jpg"/>
-                    </Button.Background>
-                </Button>
+                        <ImageBrush ImageSource="/content/Sun.jpg"/>
+                    </Button.Background>               </Button>
             </Grid>
         </TabItem>
     </TabControl>
