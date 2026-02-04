@@ -15,6 +15,8 @@ namespace ProjectV2
 
     public partial class MainWindow : Window
     {
+        
+
         #region Type Chart Data
         // 0 = pyro, 1 = aqua, 2 = flora, 3 = terra, 4 = zephyr, 5 = glacial,
         // 6 = electro, 7 = metal, 8 = noxious, 9 = lumen, 10 = spirit, 11 = vita
@@ -283,6 +285,7 @@ namespace ProjectV2
 
                 }
             }
+            
 
             
 
