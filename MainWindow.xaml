@@ -42,24 +42,29 @@
                 </StackPanel>
             </TabItem.Header>
             <Grid>
-                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,564,137" Background="#FFECECEC"/>
-                <Image x:Name="ImgArviva" HorizontalAlignment="Left" Height="169" Margin="256,23,0,0" VerticalAlignment="Top" Width="169"/>
-                <Button x:Name="BtnBack" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="441,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Background="#FF673AB7"/>
-                <Button x:Name="BtnForward" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="727,23,0,0" VerticalAlignment="Top" Height="44" Width="50"/>
-                <TextBlock x:Name="TxBlArvivaName" HorizontalAlignment="Left" Margin="524,23,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="44" Width="167" Background="#FFECECEC"/>
-                <TextBlock x:Name="TxBlArvivaCategory" HorizontalAlignment="Left" Margin="541,72,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="32" Width="133" Background="#FFECECEC"/>
-                <TextBlock x:Name="Stat_Hp" HorizontalAlignment="Left" Margin="524,132,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
-                <TextBlock x:Name="Stat_Speed" HorizontalAlignment="Left" Margin="643,132,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
-                <TextBlock x:Name="Stat_Atk" HorizontalAlignment="Left" Margin="524,167,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
-                <TextBlock x:Name="Stat_MAtk" HorizontalAlignment="Left" Margin="643,167,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
-                <TextBlock x:Name="Stat_Def" HorizontalAlignment="Left" Margin="524,204,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
-                <TextBlock x:Name="Stat_MDef" HorizontalAlignment="Left" Margin="643,204,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
-                <TextBlock x:Name="ArcatEntry" HorizontalAlignment="Left" Margin="340,255,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="121" Width="450"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="239*"/>
+                    <ColumnDefinition Width="561*"/>
+                </Grid.ColumnDefinitions>
+                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,3,0" Background="#FFECECEC" Height="208" VerticalAlignment="Top"/>
+                <Image x:Name="ImgArviva" HorizontalAlignment="Left" Height="169" Margin="17,23,0,0" VerticalAlignment="Top" Width="169" Grid.Column="1"/>
+                <Button x:Name="BtnBack" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="202,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Background="#FF673AB7" Grid.Column="1"/>
+                <Button x:Name="BtnForward" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="488,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Grid.Column="1"/>
+                <TextBlock x:Name="TxBlArvivaName" HorizontalAlignment="Left" Margin="285,23,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="44" Width="167" Background="#FFECECEC" Grid.Column="1"/>
+                <TextBlock x:Name="TxBlArvivaCategory" HorizontalAlignment="Left" Margin="302,72,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="32" Width="133" Background="#FFECECEC" Grid.Column="1"/>
+                <TextBlock x:Name="Stat_Hp" HorizontalAlignment="Left" Margin="285,121,0,0" TextWrapping="Wrap" Text="HP" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="1"/>
+                <TextBlock x:Name="Stat_Speed" HorizontalAlignment="Left" Margin="382,121,0,0" TextWrapping="Wrap" Text="SPD" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="1"/>
+                <TextBlock x:Name="Stat_Atk" HorizontalAlignment="Left" Margin="285,156,0,0" TextWrapping="Wrap" Text="ATK" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="1"/>
+                <TextBlock x:Name="Stat_MAtk" HorizontalAlignment="Left" Margin="382,156,0,0" TextWrapping="Wrap" Text="MATK" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="1"/>
+                <TextBlock x:Name="Stat_Def" HorizontalAlignment="Left" Margin="285,193,0,0" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="1"/>
+                <TextBlock x:Name="Stat_MDef" HorizontalAlignment="Left" Margin="382,193,0,0" TextWrapping="Wrap" Text="MDEF" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="1"/>
+                <TextBlock x:Name="ArcatEntry" HorizontalAlignment="Left" Margin="101,255,0,0" TextWrapping="Wrap" Text="Entry:" VerticalAlignment="Top" Background="#FFECECEC" Height="121" Width="450" Grid.Column="1"/>
                 <ComboBox HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="120" Background="#FFECECEC"/>
-                <Button x:Name="BtnSave" Content="Save " HorizontalAlignment="Left" Margin="241,216,0,0" VerticalAlignment="Top" Height="33" Width="91" Background="#FF673AB7"/>
-                <TextBox x:Name="UserName" HorizontalAlignment="Left" Margin="10,276,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="UserPassword" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="BtnSave" Content="Save " HorizontalAlignment="Left" Margin="2,216,0,0" VerticalAlignment="Top" Height="33" Width="91" Background="#FF673AB7" Grid.Column="1"/>
+                <TextBox x:Name="UserName" HorizontalAlignment="Left" Margin="10,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Username" GotFocus="UserName_GotFocus" LostFocus="UserName_LostFocus"/>
+                <TextBox x:Name="UserPassword" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Password" GotFocus="UserPassword_GotFocus" LostFocus="UserPassword_LostFocus"/>
                 <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Left" Margin="145,316,0,0" VerticalAlignment="Top" Height="28" Width="91" Background="#FF673AB7"/>
+                <Button x:Name="BtnNewTeam" Content="New Team" HorizontalAlignment="Left" Margin="145,6,0,0" VerticalAlignment="Top" Height="25" Width="84" FontSize="10"/>
             </Grid>
         </TabItem>
 

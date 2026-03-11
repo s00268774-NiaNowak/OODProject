@@ -13,7 +13,6 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ProjectV2
 {
-
     public partial class MainWindow : Window
     {
         
@@ -74,6 +73,7 @@ namespace ProjectV2
         }
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            #region Defense Screen
             //set all Type Buttons to invisible on load
             BtnType1.Visibility = Visibility.Hidden;
             BtnType1.Content = "Type";
@@ -81,9 +81,9 @@ namespace ProjectV2
             BtnType2.Content = "Type";
             BtnType3.Visibility = Visibility.Hidden;
             BtnType3.Content = "Type";
+            #endregion
 
-            //Hazard Screen visibility
-            #region 
+            #region Hazard Screen
             BtnTerraSpikes.Visibility = Visibility.Hidden;
             BtnMetalSpikes.Visibility = Visibility.Hidden;
             BtnGlacialSpikes.Visibility = Visibility.Hidden;
@@ -101,6 +101,8 @@ namespace ProjectV2
             TxBlHazards.Text = string.Empty;
             #endregion
         }
+
+        #region Defence Page
         public void AssignElementToTypeButton(string element)
         {
             if (BtnType1.Content.ToString() == "Type")
@@ -119,8 +121,6 @@ namespace ProjectV2
                 BtnType3.Visibility = Visibility.Visible;
             }
         }
-
-        #region Defence Page
         //Element Buttons
         #region Element Buttons
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -211,8 +211,6 @@ namespace ProjectV2
 
         }
 
-        //In the listbox, show how types are effective against the selected types
-
         private void BtnCalculate_Click(object sender, RoutedEventArgs e)
         {
             // Load the type database
@@ -235,7 +233,6 @@ namespace ProjectV2
                 TxtResults.Items.Add(result);
             }
         }
-
 
         private void TxtResults_Loaded(object sender, RoutedEventArgs e)
         {
@@ -415,21 +412,35 @@ namespace ProjectV2
             }
             TxBlHazards.Text = "Toxic Debris\n\n Can be applied to 1 grid piece in battle.\nDoes 1/32th Max HP damage, and then applies the Poison Status effect.\nNoxious types heal 1/32th Max HP damage each turn while in a grid piece with Toxic Debris.\nMetal types and Arviva with the 'Sky High' ability are immune.";
         }
+
+
         #endregion
+
         #endregion
 
+        private void UserName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (UserName.Text == "Username")
+            UserName.Text = null;
+        }
 
+        private void UserName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(UserName.Text))
+                UserName.Text = "Username";
+        }
 
+        private void UserPassword_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (UserPassword.Text == "Password")
+                UserPassword.Text = null;
+        }
 
-
-
-
-
-
-
-
-
-
+        private void UserPassword_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty (UserPassword.Text))
+                UserPassword.Text = "Password";
+        }
 
 
         ////foreach attacker type picked, calculate how much damage they do to each type in the type chart
