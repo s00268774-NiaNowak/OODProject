@@ -38,28 +38,28 @@
         <TabItem Tag="Offense">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Type Offense" FontSize="16" Foreground="Black" Margin="0,0,0,0"/>
+                    <TextBlock Text="The ARCAT" FontSize="16" Foreground="Black" Margin="0,0,0,0"/>
                 </StackPanel>
             </TabItem.Header>
             <Grid>
-                <Button x:Name="BtnPyro2" Content="Pyro" HorizontalAlignment="Left" Margin="30,33,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FFE81212" BorderBrush="#FFC10909" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnAqua2" Content="Aqua" HorizontalAlignment="Left" Margin="150,33,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FF0890E8" BorderBrush="#FF0872B7" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnFlora2" Content="Flora" HorizontalAlignment="Left" Margin="30,78,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FF3BE40D" BorderBrush="#FF2FC108" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnTerra2" Content="Terra" HorizontalAlignment="Left" Margin="150,78,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" BorderBrush="#FFB35E07" Background="#FFDA730A" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnVephyr2" Content="Vephyr" HorizontalAlignment="Left" Margin="30,125,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FFE0F9F5" BorderBrush="#FFBFDCD7" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnGlacial2" Content="Glacial" HorizontalAlignment="Left" Margin="150,125,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FF8DE8F3" BorderBrush="#FF78CED8" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnElectro2" Content="Electro" HorizontalAlignment="Left" Margin="30,218,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FFF7E200" BorderBrush="#FFE6B303" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnMetal2" Content="Metal" HorizontalAlignment="Left" Margin="150,218,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Foreground="Black" Background="#FF7E86B3" BorderBrush="#FF4F5473" Click="Btn_Click"/>
-                <Button x:Name="BtnNoxious2" Content="Noxious" HorizontalAlignment="Left" Margin="30,171,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnLumen2" Content="Lumen" HorizontalAlignment="Left" Margin="150,171,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FFF8FBC1" BorderBrush="#FFF0F3AB" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnSpirit2" Content="Spirit" HorizontalAlignment="Left" Margin="30,264,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FFA93AB7" BorderBrush="#FF802C8A" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnVita2" Content="Vita" HorizontalAlignment="Left" Margin="150,264,0,0" VerticalAlignment="Top" Width="86" Height="30" FontSize="14" Background="#FF0AFDAA" BorderBrush="#FF07D28D" Foreground="Black" Click="Btn_Click"/>
-                <Button x:Name="BtnType1_2" Content="Type" Margin="30,311,684,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType1_Click" Height="32"/>
-                <Button x:Name="BtnType2_2" Content="Type" HorizontalAlignment="Left" Margin="126,311,0,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType2_Click" Height="32" Width="86"/>
-                <Button x:Name="BtnType3_2" Content="Type" Margin="217,311,498,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType3_Click" Height="32"/>
-                <ListBox x:Name="TxtOffense" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="420,10,36,10" BorderBrush="Black" Background="#FFECECEC" Loaded="TxtResults_Loaded"/>
-                <Button x:Name="BtnCalculateOffense" Content="Calculate" HorizontalAlignment="Left" Margin="280,242,0,0" VerticalAlignment="Top" Click="BtnCalculateOffense_Click"/>
-
+                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,564,137" Background="#FFECECEC"/>
+                <Image x:Name="ImgArviva" HorizontalAlignment="Left" Height="169" Margin="256,23,0,0" VerticalAlignment="Top" Width="169"/>
+                <Button x:Name="BtnBack" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="441,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Background="#FF673AB7"/>
+                <Button x:Name="BtnForward" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="727,23,0,0" VerticalAlignment="Top" Height="44" Width="50"/>
+                <TextBlock x:Name="TxBlArvivaName" HorizontalAlignment="Left" Margin="524,23,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="44" Width="167" Background="#FFECECEC"/>
+                <TextBlock x:Name="TxBlArvivaCategory" HorizontalAlignment="Left" Margin="541,72,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="32" Width="133" Background="#FFECECEC"/>
+                <TextBlock x:Name="Stat_Hp" HorizontalAlignment="Left" Margin="524,132,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
+                <TextBlock x:Name="Stat_Speed" HorizontalAlignment="Left" Margin="643,132,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
+                <TextBlock x:Name="Stat_Atk" HorizontalAlignment="Left" Margin="524,167,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
+                <TextBlock x:Name="Stat_MAtk" HorizontalAlignment="Left" Margin="643,167,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
+                <TextBlock x:Name="Stat_Def" HorizontalAlignment="Left" Margin="524,204,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
+                <TextBlock x:Name="Stat_MDef" HorizontalAlignment="Left" Margin="643,204,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70"/>
+                <TextBlock x:Name="ArcatEntry" HorizontalAlignment="Left" Margin="340,255,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Background="#FFECECEC" Height="121" Width="450"/>
+                <ComboBox HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="120" Background="#FFECECEC"/>
+                <Button x:Name="BtnSave" Content="Save " HorizontalAlignment="Left" Margin="241,216,0,0" VerticalAlignment="Top" Height="33" Width="91" Background="#FF673AB7"/>
+                <TextBox x:Name="UserName" HorizontalAlignment="Left" Margin="10,276,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="UserPassword" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Left" Margin="145,316,0,0" VerticalAlignment="Top" Height="28" Width="91" Background="#FF673AB7"/>
             </Grid>
         </TabItem>
 
@@ -70,21 +70,86 @@
                 </StackPanel>
             </TabItem.Header>
             <Grid>
-                <Frame x:Name="TypeChartFrame" NavigationUIVisibility="Hidden"/>
-                <Button x:Name="SpikesMain" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Foreground="Black">
+                <Button x:Name="SpikesMain" Content="Spikes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Foreground="Black" FontSize="36" Click="SpikesMain_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/spikes.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="TendrilsMain" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Content="Button" Foreground="Black">
+                <Button x:Name="TendrilsMain" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Content="Tendrils" Foreground="Black" FontSize="34" Click="TendrilsMain_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/Vines.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="WeatherMain" Content="Button" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Foreground="Black">
+                <Button x:Name="WeatherMain" Content="Weather" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="139" Width="150" BorderBrush="Black" Foreground="Black" FontSize="30" Click="WeatherMain_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/Sun.jpg"/>
-                    </Button.Background>               </Button>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnTerraSpikes" Content="Button" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnTerraSpikes_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/spikes.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnGlacialSpikes" Content="Button" HorizontalAlignment="Left" Margin="10,264,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnGlacialSpikes_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/Icecubes.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnMetalSpikes" Content="Button" HorizontalAlignment="Left" Margin="104,170,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnMetalSpikes_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/metalspikes.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnNoxiousSpikes" Content="Button" HorizontalAlignment="Left" Margin="104,264,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnNoxiousSpikes_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/toxicspikes.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnPyroWeather" Content="Button" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnPyroWeather_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/Sun.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnVephyrWeather" Content="Button" HorizontalAlignment="Left" Margin="10,264,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnVephyrWeather_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/Wind.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnAquaWeather" Content="Button" HorizontalAlignment="Left" Margin="104,170,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnAquaWeather_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/Rain.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnElectroWeather" Content="Button" HorizontalAlignment="Left" Margin="104,264,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnElectroWeather_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/StormCloud.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnFloraTendrils" Content="Button" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnFloraTendrils_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/Vines.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnSpiritTendrils" Content="Button" HorizontalAlignment="Left" Margin="10,264,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnSpiritTendrils_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/graspingsouls.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button
+                Margin="104,170,0,0" Width="89" VerticalAlignment="Top" x:Name="BtnLumenTendrils" Height="89" HorizontalAlignment="Left" Foreground="{x:Null}" Content="Button" Click="BtnLumenTendrils_Click">
+                    <Button.Background
+                >
+                        <ImageBrush
+                ImageSource="/content/vinelights.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BtnVitaTendrils" Content="Button" HorizontalAlignment="Left" Margin="104,264,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnVitaTendrils_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/content/mycelium.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Image x:Name="ImgHazard" HorizontalAlignment="Left" Height="144" Margin="212,193,0,0" VerticalAlignment="Top" Width="144"/>
+                <TextBlock x:Name="TxBlHazards" HorizontalAlignment="Left" Margin="374,193,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="173" Width="405"/>
             </Grid>
         </TabItem>
     </TabControl>

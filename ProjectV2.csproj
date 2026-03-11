@@ -9,10 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="spikes.jpg" />
+    <None Remove="graspingsouls.jpg" />
+    <None Remove="Icecubes.jpg" />
+    <None Remove="metalspikes.jpg" />
+    <None Remove="mycelium.jpg" />
+    <None Remove="Rain.jpg" />
+    <None Remove="StormCloud.jpg" />
     <None Remove="Sun.jpg" />
     <None Remove="temp.jpg" />
-    <None Remove="Vines.jpg" />
+    <None Remove="toxicspikes.jpg" />
+    <None Remove="vinelights.jpg" />
+    <None Remove="Wind.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +34,15 @@
     <Resource Include="content\spikes.jpg" />
     <Resource Include="content\Sun.jpg" />
     <Resource Include="content\Vines.jpg" />
+    <Resource Include="content\metalspikes.jpg" />
+    <Resource Include="content\Icecubes.jpg" />
+    <Resource Include="content\toxicspikes.jpg" />
+    <Resource Include="content\Rain.jpg" />
+    <Resource Include="content\Wind.jpg" />
+    <Resource Include="content\StormCloud.jpg" />
+    <Resource Include="content\vinelights.jpg" />
+    <Resource Include="content\graspingsouls.jpg" />
+    <Resource Include="content\mycelium.jpg" />
   </ItemGroup>
 
 </Project>

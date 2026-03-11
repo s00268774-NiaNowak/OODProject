@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TypeChart;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ProjectV2
 {
@@ -71,6 +72,35 @@ namespace ProjectV2
         {
             InitializeComponent();
         }
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            //set all Type Buttons to invisible on load
+            BtnType1.Visibility = Visibility.Hidden;
+            BtnType1.Content = "Type";
+            BtnType2.Visibility = Visibility.Hidden;
+            BtnType2.Content = "Type";
+            BtnType3.Visibility = Visibility.Hidden;
+            BtnType3.Content = "Type";
+
+            //Hazard Screen visibility
+            #region 
+            BtnTerraSpikes.Visibility = Visibility.Hidden;
+            BtnMetalSpikes.Visibility = Visibility.Hidden;
+            BtnGlacialSpikes.Visibility = Visibility.Hidden;
+            BtnNoxiousSpikes.Visibility = Visibility.Hidden;
+            BtnPyroWeather.Visibility = Visibility.Hidden;
+            BtnAquaWeather.Visibility = Visibility.Hidden;
+            BtnElectroWeather.Visibility = Visibility.Hidden;
+            BtnVephyrWeather.Visibility = Visibility.Hidden;
+            BtnFloraTendrils.Visibility = Visibility.Hidden;
+            BtnLumenTendrils.Visibility = Visibility.Hidden;
+            BtnSpiritTendrils.Visibility = Visibility.Hidden;
+            BtnVitaTendrils.Visibility = Visibility.Hidden;
+
+            ImgHazard.Source = null;
+            TxBlHazards.Text = string.Empty;
+            #endregion
+        }
         public void AssignElementToTypeButton(string element)
         {
             if (BtnType1.Content.ToString() == "Type")
@@ -88,24 +118,9 @@ namespace ProjectV2
                 BtnType3.Content = element;
                 BtnType3.Visibility = Visibility.Visible;
             }
-
-            if (BtnType1_2.Content.ToString() == "Type")
-            {
-                BtnType1_2.Content = element;
-                BtnType1_2.Visibility = Visibility.Visible;
-            }
-            else if (BtnType2_2.Content.ToString() == "Type" && BtnType1_2.Content.ToString() != element)
-            {
-                BtnType2_2.Content = element;
-                BtnType2_2.Visibility = Visibility.Visible;
-            }
-            else if (BtnType3_2.Content.ToString() == "Type" && BtnType1_2.Content.ToString() != element && BtnType2_2.Content.ToString() != element)
-            {
-                BtnType3_2.Content = element;
-                BtnType3_2.Visibility = Visibility.Visible;
-            }
-
         }
+
+        #region Defence Page
         //Element Buttons
         #region Element Buttons
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -130,26 +145,24 @@ namespace ProjectV2
             BtnType2.Content = BtnType3.Content;
             BtnType3.Content = "Type";
 
-            BtnType1_2.Content = BtnType2_2.Content;
-            BtnType2_2.Content = BtnType3_2.Content;
-            BtnType3_2.Content = "Type";
+           
 
 
             //set visibility
-            if (BtnType2.Content.ToString() == "Type" || BtnType2_2.Content.ToString() == "Type")
+            if (BtnType2.Content.ToString() == "Type" )
             {
                 BtnType2.Visibility = Visibility.Hidden;
-                BtnType2_2.Visibility = Visibility.Hidden;
+               
             }
-            if (BtnType3.Content.ToString() == "Type" || BtnType3_2.Content.ToString() == "Type")
+            if (BtnType3.Content.ToString() == "Type")
             {
                 BtnType3.Visibility = Visibility.Hidden;
-                BtnType3_2.Visibility = Visibility.Hidden;
+               
             }
-            if (BtnType1.Content.ToString() == "Type" || BtnType1_2.Content.ToString() == "Type")
+            if (BtnType1.Content.ToString() == "Type")
             {
                 BtnType1.Visibility = Visibility.Hidden;
-                BtnType1_2.Visibility = Visibility.Hidden;
+               
             }
 
         }
@@ -159,20 +172,19 @@ namespace ProjectV2
             BtnType2.Content = BtnType3.Content;
             BtnType3.Content = "Type";
 
-            BtnType2_2.Content = BtnType3_2.Content;
-            BtnType3_2.Content = "Type";
+           
 
 
             //set visibility
-            if (BtnType3.Content.ToString() == "Type" || BtnType3_2.Content.ToString() == "Type")
+            if (BtnType3.Content.ToString() == "Type" )
             {
                 BtnType3.Visibility = Visibility.Hidden;
-                BtnType3_2.Visibility = Visibility.Hidden;
+                
             }
-            if (BtnType2.Content.ToString() == "Type" || BtnType2_2.Content.ToString() == "Type")
+            if (BtnType2.Content.ToString() == "Type" )
             {
                 BtnType2.Visibility = Visibility.Hidden;
-                BtnType2_2.Visibility = Visibility.Hidden;
+                
             }
 
         }
@@ -181,24 +193,11 @@ namespace ProjectV2
         {
             BtnType3.Content = "Type";
             BtnType3.Visibility = Visibility.Hidden;
-            BtnType3_2.Content = "Type";
-            BtnType3_2.Visibility = Visibility.Hidden;
+          
 
         }
         #endregion Type Buttons
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            //set all Type Buttons to invisible on load
-            BtnType1.Visibility = Visibility.Hidden; BtnType1_2.Visibility = Visibility.Hidden;
-            BtnType1.Content = "Type"; BtnType1_2.Content = "Type";
-            BtnType2.Visibility = Visibility.Hidden; BtnType2_2.Visibility = Visibility.Hidden;
-            BtnType2.Content = "Type"; BtnType2_2.Content = "Type";
-            BtnType3.Visibility = Visibility.Hidden; BtnType3_2.Visibility = Visibility.Hidden;
-            BtnType3.Content = "Type"; BtnType3_2.Content = "Type";
-        }
-
-        //Match the typebutton content to the typeNames index
-
+       
         public int GetTypeIndex(string typeName)
         {
             for (int i = 0; i < TypeNames.Length; i++)
@@ -242,74 +241,213 @@ namespace ProjectV2
         {
             TxtResults.Items.Clear();
         }
+        #endregion
 
-
-
-        private void BtnCalculateOffense_Click(object sender, RoutedEventArgs e)
+        #region Hazards Page
+        private void SpikesMain_Click(object sender, RoutedEventArgs e)
         {
-            // Load the type database
-            LoadTypeDatabase();
-            // Clear previous results
-            TxtOffense.Items.Clear();
-
-
-            int type1 = GetTypeIndex(BtnType1_2.Content.ToString());
-            int type2 = GetTypeIndex(BtnType2_2.Content.ToString());
-            int type3 = GetTypeIndex(BtnType3_2.Content.ToString());
-            if (type1 != null)
-            {
-                
-                var effectivenessDictionary = typeChart[type1];
-                int[] strengths = effectivenessDictionary.StrongAgainst;
-                int[] resists = effectivenessDictionary.WeakAgainst;
-
-                //loop through each type
-                foreach (string typ in TypeNames)
-                {
-                    //for each type check multiplier versus selected
-
-                    int currentType = GetTypeIndex(typ);
-
-                    float multiplier = 1;
-
-                    //option 1 - it's in the super effective category
-                    if (strengths.Contains(currentType))
-                        multiplier = 2;
-
-                    //option 3 - it resist(weak)
-                    else if (resists.Contains(currentType))
-                        multiplier = 0.5f;
-
-                    string result = $"{typ}: x{multiplier:F2}";
-                    TxtOffense.Items.Add(result);
-
-                }
-            }
-            
-
-            
-
-
-
-
-
-
-            ////foreach attacker type picked, calculate how much damage they do to each type in the type chart
-            //foreach (var attackerType in typeChart.Keys)
-            //{
-            //    var rules = typeChart[attackerType];
-            //    float multiplier = 1.0f;
-            //    //for loop of it attacking every type
-
-
-            //    //for (int i = 0; i < TypeNames.Length; i++)
-            //    //{
-
-            //    //    multiplier *= DefenderMultiplier(rules,i, 0);
-            //    //}
-            //    string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
-            //    TxtOffense.Items.Add(result);
-            //}
+            #region Spikes
+            BtnTerraSpikes.Visibility = Visibility.Visible;
+            BtnNoxiousSpikes.Visibility = Visibility.Visible;
+            BtnGlacialSpikes.Visibility = Visibility.Visible;
+            BtnMetalSpikes.Visibility = Visibility.Visible;
+            #endregion
+            #region Hide
+            BtnPyroWeather.Visibility = Visibility.Hidden;
+            BtnAquaWeather.Visibility = Visibility.Hidden;
+            BtnElectroWeather.Visibility = Visibility.Hidden;
+            BtnVephyrWeather.Visibility = Visibility.Hidden;
+            BtnFloraTendrils.Visibility = Visibility.Hidden;
+            BtnLumenTendrils.Visibility = Visibility.Hidden;
+            BtnSpiritTendrils.Visibility = Visibility.Hidden;
+            BtnVitaTendrils.Visibility = Visibility.Hidden;
+            #endregion
         }
+
+        private void WeatherMain_Click(object sender, RoutedEventArgs e)
+        {
+            #region Weather
+            BtnPyroWeather.Visibility = Visibility.Visible;
+            BtnAquaWeather.Visibility = Visibility.Visible;
+            BtnElectroWeather.Visibility = Visibility.Visible;
+            BtnVephyrWeather.Visibility = Visibility.Visible;
+            #endregion
+            #region Hide
+            BtnTerraSpikes.Visibility = Visibility.Hidden;
+            BtnNoxiousSpikes.Visibility = Visibility.Hidden;
+            BtnGlacialSpikes.Visibility = Visibility.Hidden;
+            BtnMetalSpikes.Visibility = Visibility.Hidden;
+            BtnFloraTendrils.Visibility = Visibility.Hidden;
+            BtnLumenTendrils.Visibility = Visibility.Hidden;
+            BtnSpiritTendrils.Visibility = Visibility.Hidden;
+            BtnVitaTendrils.Visibility = Visibility.Hidden;
+            #endregion
+        }
+
+        private void TendrilsMain_Click(object sender, RoutedEventArgs e)
+        {
+            #region Tendrils
+            BtnFloraTendrils.Visibility = Visibility.Visible;
+            BtnLumenTendrils.Visibility = Visibility.Visible;
+            BtnSpiritTendrils.Visibility = Visibility.Visible;
+            BtnVitaTendrils.Visibility = Visibility.Visible;
+            #endregion
+            #region Hide
+            BtnTerraSpikes.Visibility = Visibility.Hidden;
+            BtnNoxiousSpikes.Visibility = Visibility.Hidden;
+            BtnGlacialSpikes.Visibility = Visibility.Hidden;
+            BtnMetalSpikes.Visibility = Visibility.Hidden;
+            BtnPyroWeather.Visibility = Visibility.Hidden;
+            BtnAquaWeather.Visibility = Visibility.Hidden;
+            BtnElectroWeather.Visibility = Visibility.Hidden;
+            BtnVephyrWeather.Visibility = Visibility.Hidden;
+            #endregion
+        }
+        #region TendrilBtns
+        private void BtnFloraTendrils_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnFloraTendrils.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Thorn Roots\n\nCan be applied to 1 grid piece in battle.\nTraps an Arviva that enteres the grid piece for 3 turns.\nDeals 1/16th Max HP damage and deals the user's team for equal hp.";
+        }
+
+        private void BtnLumenTendrils_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnLumenTendrils.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Light Roots\n\nCan be applied to 1 grid piece in battle.\nTraps an Arviva that enteres the grid piece for 2 turns.\nLower's the targets Magic Defense by 1 stage for each turn, raising the user's Magic Defense in turn.";
+        }
+
+        private void BtnSpiritTendrils_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnSpiritTendrils.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Grasping Souls\n\nCan be applied to 1 grid piece in battle.\nTraps an Arviva that enteres the grid piece for 2 turns.\nLower's the targets Magic Attack by 1 stage for each turn, raising the user's Magic Attack in turn.\nLumen Arviva are immune.";
+        }
+
+        private void BtnVitaTendrils_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnVitaTendrils.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Mycelium\n\nCan be applied to 1 grid piece in battle.\nTraps an Arviva that enteres the grid piece for 3 turns.\nDeals 1/32th Max HP damage and deals the user's team for equal hp.\nIt also confuses the target.";
+        }
+        #endregion
+
+        #region WeatherBtns
+        private void BtnPyroWeather_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnPyroWeather.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Sunny Day\n\nAffects whole board.\nBoosts Pyro and Lumen moves by 1.5x.\nHalves Aqua move damage.";
+        }
+
+        private void BtnAquaWeather_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnAquaWeather.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Down Pour\n\nAffects whole board.\nBoots Aqua and Spirit moves by 1.5x.\nHalves Pyro move damage.";
+        }
+
+        private void BtnVephyrWeather_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnVephyrWeather.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Strong Winds\n\nAffects whole board.\nBoosts Vephyr moves by 1.5x.\nRemoves hazards from the user's side and makes hazards unable to be set on their side until Strong Winds is over.";
+        }
+
+        private void BtnElectroWeather_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnElectroWeather.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Thunder Storm\n\nAffects whole board.\nBoosts Electro moves by 1.5x.\n Gives Electro, Metal, and Vephyr Arviva a +1 stat raise to their speed. This effect stacks.";
+        }
+        #endregion
+        
+        #region SpikeBtns
+        private void BtnTerraSpikes_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnTerraSpikes.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Spikes \n\nCan be applied to 1 grid piece in battle. \nDoes 1/16th Max HP damage, type calculations apply.\nArviva with the 'Sky High' ability are immune.";
+        }
+
+        private void BtnMetalSpikes_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnMetalSpikes.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Steel Spikes \n\n Can be applied to 1 grid piece in battle. \nDoes 1/16th Max HP damage, type calculations apply.\nElectro Arviva are pulled to the grid piece the hazard is present in.\nArviva with the 'Sky High' ability are immune.";
+        }
+
+        private void BtnGlacialSpikes_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnGlacialSpikes.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Ice Cubes \n\n Can be applied to 1 grid piece in battle. \nDoes 1/32th Max HP damage to arviva weak to the Glacial type. \nLowers Speed and Accuracy by 1 stage each time the grid is entered.\nGlacial Types and Arviva with the 'Sky High' ability are immune.";
+        }
+
+        private void BtnNoxiousSpikes_Click(object sender, RoutedEventArgs e)
+        {
+            if (BtnNoxiousSpikes.Background is ImageBrush brush && brush.ImageSource != null)
+            {
+                ImgHazard.Source = brush.ImageSource;
+            }
+            TxBlHazards.Text = "Toxic Debris\n\n Can be applied to 1 grid piece in battle.\nDoes 1/32th Max HP damage, and then applies the Poison Status effect.\nNoxious types heal 1/32th Max HP damage each turn while in a grid piece with Toxic Debris.\nMetal types and Arviva with the 'Sky High' ability are immune.";
+        }
+        #endregion
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////foreach attacker type picked, calculate how much damage they do to each type in the type chart
+        //foreach (var attackerType in typeChart.Keys)
+        //{
+        //    var rules = typeChart[attackerType];
+        //    float multiplier = 1.0f;
+        //    //for loop of it attacking every type
+
+
+        //    //for (int i = 0; i < TypeNames.Length; i++)
+        //    //{
+
+        //    //    multiplier *= DefenderMultiplier(rules,i, 0);
+        //    //}
+        //    string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
+        //    TxtOffense.Items.Add(result);
+        //}
+
     }
 }
