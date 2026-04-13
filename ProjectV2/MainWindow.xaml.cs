@@ -108,16 +108,15 @@ namespace ProjectV2
             ArvivaData db = new ArvivaData();
             using (db)
             {
-                var arvivas = from a in db.Arvivas
-                              select a.Name;
+                #region List Data
+                var arvivasNames = from a in db.Arvivas
+                                   select a.Name;
 
-                var Nameresults = arvivas.ToList();
+                var Nameresults = arvivasNames.ToList();
 
-                foreach (var name in Nameresults)
-                {
-                    ArcatLst.Items.Add(Nameresults);
-                }
-                
+                ArcatLst.ItemsSource = (Nameresults);
+                #endregion
+
             }
 
             #endregion
@@ -469,16 +468,69 @@ namespace ProjectV2
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-
+            var SelectedArviva = ArcatLst.SelectedItem;
+            if (SelectedArviva != null)
+            {
+                int currentIndex = ArcatLst.SelectedIndex;
+                if (currentIndex > 0)
+                {
+                    ArcatLst.SelectedIndex = currentIndex - 1;
+                    BtnData_Click(sender, e);
+                }
+                if (currentIndex == 0)
+                {
+                    ArcatLst.SelectedIndex = ArcatLst.Items.Count - 1;
+                    BtnData_Click(sender, e);
+                }
+            }
         }
 
         private void BtnForward_Click(object sender, RoutedEventArgs e)
         {
-
+            var SelectedArviva = ArcatLst.SelectedItem;
+            if (SelectedArviva != null)
+            {
+                int currentIndex = ArcatLst.SelectedIndex;
+                if (currentIndex < ArcatLst.Items.Count)
+                {
+                    ArcatLst.SelectedIndex = currentIndex + 1;
+                    BtnData_Click(sender, e);
+                }
+                if (currentIndex == ArcatLst.Items.Count -1)
+                {
+                    ArcatLst.SelectedIndex = 0;
+                    BtnData_Click(sender, e);
+                }
+            }
         }
+
 
         #endregion
 
+        private void BtnData_Click(object sender, RoutedEventArgs e)
+        {
+            ArvivaData db = new ArvivaData();
+            using (db)
+            {
+                var selectedArviva = ArcatLst.SelectedItem;
 
+                var ArvivaSelected = from a in db.Arvivas
+                                     where a.Name == selectedArviva.ToString()
+                                     select a;
+
+                var ArvivaResult = ArvivaSelected.FirstOrDefault();
+                TxBlArvivaName.Text = ArvivaResult.Name;
+                TxBlArvivaCategory.Text = ArvivaResult.Catgeory;
+                Stat_Hp.Text = "HP " + ArvivaResult.Hp.ToString();
+                Stat_Speed.Text = "SPD " + ArvivaResult.Spd.ToString();
+                Stat_Atk.Text = "ATK " + ArvivaResult.Atk.ToString();
+                Stat_Def.Text = "DEF " + ArvivaResult.Def.ToString();
+                Stat_MAtk.Text = "MATK " + ArvivaResult.MAtk.ToString();
+                Stat_MDef.Text = "MDEF " + ArvivaResult.MDef.ToString();
+                ArcatEntry.Text = ArvivaResult.Description;
+
+
+            }
+        }
     }
 }

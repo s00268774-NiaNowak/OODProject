@@ -46,7 +46,7 @@
                     <ColumnDefinition Width="239*"/>
                     <ColumnDefinition Width="561*"/>
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="ArcatLst" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,3,0" Background="#FFECECEC" Height="208" VerticalAlignment="Top"/>
+                <ListBox x:Name="ArcatLst" Margin="10,41,3,0" Background="#FFECECEC" Height="208" VerticalAlignment="Top"/>
                 <Image x:Name="ImgArviva" HorizontalAlignment="Left" Height="169" Margin="17,23,0,0" VerticalAlignment="Top" Width="169" Grid.Column="1"/>
                 <Button x:Name="BtnBack" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="202,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Background="#FF673AB7" Grid.Column="1" Click="BtnBack_Click"/>
                 <Button x:Name="BtnForward" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="488,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Grid.Column="1" Click="BtnForward_Click"/>
@@ -60,7 +60,7 @@
                 <TextBlock x:Name="Stat_MDef" HorizontalAlignment="Left" Margin="382,193,0,0" TextWrapping="Wrap" Text="MDEF" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="1"/>
                 <TextBlock x:Name="ArcatEntry" HorizontalAlignment="Left" Margin="101,255,0,0" TextWrapping="Wrap" Text="Entry:" VerticalAlignment="Top" Background="#FFECECEC" Height="121" Width="450" Grid.Column="1"/>
                 <ComboBox HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="120" Background="#FFECECEC"/>
-                <Button x:Name="BtnSave" Content="Save " HorizontalAlignment="Left" Margin="2,216,0,0" VerticalAlignment="Top" Height="33" Width="91" Background="#FF673AB7" Grid.Column="1"/>
+                <Button x:Name="BtnData" Content="Data" HorizontalAlignment="Left" Margin="2,216,0,0" VerticalAlignment="Top" Height="33" Width="91" Background="#FF673AB7" Grid.Column="1" Click="BtnData_Click"/>
                 <TextBox x:Name="UserName" HorizontalAlignment="Left" Margin="10,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Username" GotFocus="UserName_GotFocus" LostFocus="UserName_LostFocus"/>
                 <TextBox x:Name="UserPassword" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Password" GotFocus="UserPassword_GotFocus" LostFocus="UserPassword_LostFocus"/>
                 <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Left" Margin="145,316,0,0" VerticalAlignment="Top" Height="28" Width="91" Background="#FF673AB7"/>

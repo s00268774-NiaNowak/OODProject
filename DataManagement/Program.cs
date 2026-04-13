@@ -121,7 +121,10 @@ namespace DataManagement
                     types = new string[] { "Lumen", "Pyro", "Metal" },
                     Description = ""
                 };
+                db.Arvivas.AddRange(new List<Arviva>() { a1, a2, a3, a4, a5, a6, a7 });
+                db.SaveChanges();
             }
+            
         }
     }
 }
