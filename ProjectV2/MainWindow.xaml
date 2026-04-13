@@ -46,10 +46,10 @@
                     <ColumnDefinition Width="239*"/>
                     <ColumnDefinition Width="561*"/>
                 </Grid.ColumnDefinitions>
-                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,3,0" Background="#FFECECEC" Height="208" VerticalAlignment="Top"/>
+                <ListBox x:Name="ArcatLst" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,3,0" Background="#FFECECEC" Height="208" VerticalAlignment="Top" Loaded="ArcatLst_Loaded"/>
                 <Image x:Name="ImgArviva" HorizontalAlignment="Left" Height="169" Margin="17,23,0,0" VerticalAlignment="Top" Width="169" Grid.Column="1"/>
-                <Button x:Name="BtnBack" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="202,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Background="#FF673AB7" Grid.Column="1"/>
-                <Button x:Name="BtnForward" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="488,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Grid.Column="1"/>
+                <Button x:Name="BtnBack" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="202,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Background="#FF673AB7" Grid.Column="1" Click="BtnBack_Click"/>
+                <Button x:Name="BtnForward" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="488,23,0,0" VerticalAlignment="Top" Height="44" Width="50" Grid.Column="1" Click="BtnForward_Click"/>
                 <TextBlock x:Name="TxBlArvivaName" HorizontalAlignment="Left" Margin="285,23,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="44" Width="167" Background="#FFECECEC" Grid.Column="1"/>
                 <TextBlock x:Name="TxBlArvivaCategory" HorizontalAlignment="Left" Margin="302,72,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="32" Width="133" Background="#FFECECEC" Grid.Column="1"/>
                 <TextBlock x:Name="Stat_Hp" HorizontalAlignment="Left" Margin="285,121,0,0" TextWrapping="Wrap" Text="HP" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="1"/>

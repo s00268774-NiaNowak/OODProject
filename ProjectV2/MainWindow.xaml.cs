@@ -418,6 +418,8 @@ namespace ProjectV2
 
         #endregion
 
+        #region Arcat Page
+        #region Profile Focus [Possibly remove]
         private void UserName_GotFocus(object sender, RoutedEventArgs e)
         {
             if (UserName.Text == "Username")
@@ -441,24 +443,24 @@ namespace ProjectV2
             if (string.IsNullOrEmpty (UserPassword.Text))
                 UserPassword.Text = "Password";
         }
+        #endregion
+        private void ArcatLst_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
 
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
 
-        ////foreach attacker type picked, calculate how much damage they do to each type in the type chart
-        //foreach (var attackerType in typeChart.Keys)
-        //{
-        //    var rules = typeChart[attackerType];
-        //    float multiplier = 1.0f;
-        //    //for loop of it attacking every type
+        }
 
+        private void BtnForward_Click(object sender, RoutedEventArgs e)
+        {
 
-        //    //for (int i = 0; i < TypeNames.Length; i++)
-        //    //{
+        }
 
-        //    //    multiplier *= DefenderMultiplier(rules,i, 0);
-        //    //}
-        //    string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
-        //    TxtOffense.Items.Add(result);
-        //}
+        #endregion
+
 
     }
 }
