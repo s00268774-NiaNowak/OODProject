@@ -528,6 +528,8 @@ namespace ProjectV2
                 Stat_MAtk.Text = "MATK " + ArvivaResult.MAtk.ToString();
                 Stat_MDef.Text = "MDEF " + ArvivaResult.MDef.ToString();
                 ArcatEntry.Text = ArvivaResult.Description;
+                if (ArvivaResult.ImageUrl != null)
+                ImgArviva.Source = new BitmapImage(new Uri(ArvivaResult.ImageUrl, UriKind.RelativeOrAbsolute));
 
 
             }
