@@ -15,7 +15,7 @@ namespace ProjectV2
 {
     public partial class MainWindow : Window
     {
-        
+
 
         #region Type Chart Data
         // 0 = pyro, 1 = aqua, 2 = flora, 3 = terra, 4 = zephyr, 5 = glacial,
@@ -70,6 +70,9 @@ namespace ProjectV2
         public MainWindow()
         {
             InitializeComponent();
+
+            ArvivaData db = new ArvivaData();
+
         }
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -99,6 +102,24 @@ namespace ProjectV2
 
             ImgHazard.Source = null;
             TxBlHazards.Text = string.Empty;
+            #endregion
+
+            #region Arcat Screen
+            ArvivaData db = new ArvivaData();
+            using (db)
+            {
+                var arvivas = from a in db.Arvivas
+                              select a.Name;
+
+                var Nameresults = arvivas.ToList();
+
+                foreach (var name in Nameresults)
+                {
+                    ArcatLst.Items.Add(Nameresults);
+                }
+                
+            }
+
             #endregion
         }
 
@@ -145,24 +166,24 @@ namespace ProjectV2
             BtnType2.Content = BtnType3.Content;
             BtnType3.Content = "Type";
 
-           
+
 
 
             //set visibility
-            if (BtnType2.Content.ToString() == "Type" )
+            if (BtnType2.Content.ToString() == "Type")
             {
                 BtnType2.Visibility = Visibility.Hidden;
-               
+
             }
             if (BtnType3.Content.ToString() == "Type")
             {
                 BtnType3.Visibility = Visibility.Hidden;
-               
+
             }
             if (BtnType1.Content.ToString() == "Type")
             {
                 BtnType1.Visibility = Visibility.Hidden;
-               
+
             }
 
         }
@@ -172,19 +193,19 @@ namespace ProjectV2
             BtnType2.Content = BtnType3.Content;
             BtnType3.Content = "Type";
 
-           
+
 
 
             //set visibility
-            if (BtnType3.Content.ToString() == "Type" )
+            if (BtnType3.Content.ToString() == "Type")
             {
                 BtnType3.Visibility = Visibility.Hidden;
-                
+
             }
-            if (BtnType2.Content.ToString() == "Type" )
+            if (BtnType2.Content.ToString() == "Type")
             {
                 BtnType2.Visibility = Visibility.Hidden;
-                
+
             }
 
         }
@@ -193,11 +214,11 @@ namespace ProjectV2
         {
             BtnType3.Content = "Type";
             BtnType3.Visibility = Visibility.Hidden;
-          
+
 
         }
         #endregion Type Buttons
-       
+
         public int GetTypeIndex(string typeName)
         {
             for (int i = 0; i < TypeNames.Length; i++)
@@ -375,7 +396,7 @@ namespace ProjectV2
             TxBlHazards.Text = "Thunder Storm\n\nAffects whole board.\nBoosts Electro moves by 1.5x.\n Gives Electro, Metal, and Vephyr Arviva a +1 stat raise to their speed. This effect stacks.";
         }
         #endregion
-        
+
         #region SpikeBtns
         private void BtnTerraSpikes_Click(object sender, RoutedEventArgs e)
         {
@@ -423,7 +444,7 @@ namespace ProjectV2
         private void UserName_GotFocus(object sender, RoutedEventArgs e)
         {
             if (UserName.Text == "Username")
-            UserName.Text = null;
+                UserName.Text = null;
         }
 
         private void UserName_LostFocus(object sender, RoutedEventArgs e)
@@ -440,14 +461,11 @@ namespace ProjectV2
 
         private void UserPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty (UserPassword.Text))
+            if (string.IsNullOrEmpty(UserPassword.Text))
                 UserPassword.Text = "Password";
         }
         #endregion
-        private void ArcatLst_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
+
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
