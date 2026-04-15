@@ -17,8 +17,6 @@ namespace ProjectV2
 {
     public partial class MainWindow : Window
     {
-
-
         #region Type Chart Data
         // 0 = pyro, 1 = aqua, 2 = flora, 3 = terra, 4 = zephyr, 5 = glacial,
         // 6 = electro, 7 = metal, 8 = noxious, 9 = lumen, 10 = spirit, 11 = vita
@@ -110,14 +108,11 @@ namespace ProjectV2
             ArvivaData db = new ArvivaData();
             using (db)
             {
-                #region List Data
                 var arvivasNames = from a in db.Arvivas
                                    select a.Name;
 
                 var Nameresults = arvivasNames.ToList();
-
                 ArcatLst.ItemsSource = (Nameresults);
-                #endregion
 
             }
 
@@ -125,21 +120,27 @@ namespace ProjectV2
         }
 
         #region Defence Page
-        public void AssignElementToTypeButton(string element)
+        public void AssignElementToTypeButton(string element, Color color, Color border)
         {
             if (BtnType1.Content.ToString() == "Type")
             {
                 BtnType1.Content = element;
+                BtnType1.Foreground = new SolidColorBrush(color);
+                BtnType1.BorderBrush = new SolidColorBrush(border);
                 BtnType1.Visibility = Visibility.Visible;
             }
             else if (BtnType2.Content.ToString() == "Type" && BtnType1.Content.ToString() != element)
             {
                 BtnType2.Content = element;
+                BtnType2.Foreground = new SolidColorBrush(color);
+                BtnType2.BorderBrush = new SolidColorBrush(border);
                 BtnType2.Visibility = Visibility.Visible;
             }
             else if (BtnType3.Content.ToString() == "Type" && BtnType1.Content.ToString() != element && BtnType2.Content.ToString() != element)
             {
                 BtnType3.Content = element;
+                BtnType3.Foreground = new SolidColorBrush(color);
+                BtnType3.BorderBrush = new SolidColorBrush(border);
                 BtnType3.Visibility = Visibility.Visible;
             }
         }
@@ -152,7 +153,9 @@ namespace ProjectV2
             if (selectedButton != null)
             {
                 string elementContent = selectedButton.Content.ToString();
-                AssignElementToTypeButton(elementContent);
+                Color backgroundColor = ((SolidColorBrush)selectedButton.Background).Color;
+                Color borderColor = ((SolidColorBrush)selectedButton.BorderBrush).Color;
+                AssignElementToTypeButton(elementContent, backgroundColor, borderColor);
             }
         }
 
@@ -161,14 +164,16 @@ namespace ProjectV2
         #region Type Buttons
         private void BtnType1_Click(object sender, RoutedEventArgs e)
         {
-            //code to remove type from button and shift other types down
+            //code to remove type from button and shift other types down | Now also fixes colour
 
             BtnType1.Content = BtnType2.Content;
+                BtnType1.Foreground = BtnType2.Foreground;
+                BtnType1.BorderBrush = BtnType2.BorderBrush;
             BtnType2.Content = BtnType3.Content;
+                BtnType2.Foreground = BtnType3.Foreground;  
+                BtnType2.BorderBrush = BtnType3.BorderBrush;
             BtnType3.Content = "Type";
-
-
-
+            
 
             //set visibility
             if (BtnType2.Content.ToString() == "Type")
@@ -192,6 +197,8 @@ namespace ProjectV2
         private void BtnType2_Click(object sender, RoutedEventArgs e)
         {
             BtnType2.Content = BtnType3.Content;
+                BtnType2.Foreground = BtnType3.Foreground;
+                BtnType2.BorderBrush = BtnType3.BorderBrush;
             BtnType3.Content = "Type";
 
 
@@ -441,9 +448,6 @@ namespace ProjectV2
         #endregion
 
         #region Arcat Page
-       
-
-
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             var SelectedArviva = ArcatLst.SelectedItem;
@@ -481,10 +485,6 @@ namespace ProjectV2
                 }
             }
         }
-
-
-        
-
         private void BtnData_Click(object sender, RoutedEventArgs e)
         {
             ArvivaData db = new ArvivaData();
@@ -495,7 +495,6 @@ namespace ProjectV2
                 var ArvivaSelected = from a in db.Arvivas
                                      where a.Name == selectedArviva.ToString()
                                      select a;
-
 
                 var ArvivaResult = ArvivaSelected.FirstOrDefault();
 
@@ -509,6 +508,7 @@ namespace ProjectV2
                 Stat_MAtk.Text = "MATK " + ArvivaResult.MAtk.ToString();
                 Stat_MDef.Text = "MDEF " + ArvivaResult.MDef.ToString();
                 ArcatEntry.Text = ArvivaResult.Description;
+
                 if (ArvivaResult.ImageUrl != null)
                 {
                     #region Directory Traversal
@@ -517,15 +517,20 @@ namespace ProjectV2
                     string grandParentDirectory = Directory.GetParent(parentDirectory).FullName;
                     string greatGrandParent = Directory.GetParent(grandParentDirectory).FullName;
                     #endregion
-                    string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl;
-                    ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
-
+                    if (WarpCBx.IsChecked == false)
+                    {
+                        string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl + ".png";
+                        ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
+                    }
+                    else
+                    {
+                        string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl + "warp.png";
+                        ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
+                    }
                 }
                 #endregion
-                #endregion
-
-
             }
         }
+        #endregion
     }
 }
