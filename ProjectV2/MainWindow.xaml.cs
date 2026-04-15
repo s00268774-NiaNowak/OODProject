@@ -115,6 +115,19 @@ namespace ProjectV2
                 ArcatLst.ItemsSource = (Nameresults);
 
             }
+            ArcatLst.SelectedIndex = -1;
+            TxBlArvivaName.Text = string.Empty;
+            TxBlArvivaCategory.Text = string.Empty;
+            Stat_Hp.Text = "HP:";
+            Stat_Speed.Text = "SPD:";
+            Stat_Atk.Text = "ATK:";
+            Stat_Def.Text = "DEF:";
+            Stat_MAtk.Text = "MATK:";
+            Stat_MDef.Text = "MDEF:";
+            ArcatEntry.Text = string.Empty;
+            ImgArviva.Source = null;
+            WarpCBx.IsChecked = false;
+            
 
             #endregion
         }
@@ -167,63 +180,48 @@ namespace ProjectV2
             //code to remove type from button and shift other types down | Now also fixes colour
 
             BtnType1.Content = BtnType2.Content;
-                BtnType1.Foreground = BtnType2.Foreground;
-                BtnType1.BorderBrush = BtnType2.BorderBrush;
+            BtnType1.Foreground = BtnType2.Foreground;
+            BtnType1.BorderBrush = BtnType2.BorderBrush;
             BtnType2.Content = BtnType3.Content;
-                BtnType2.Foreground = BtnType3.Foreground;  
-                BtnType2.BorderBrush = BtnType3.BorderBrush;
+            BtnType2.Foreground = BtnType3.Foreground;
+            BtnType2.BorderBrush = BtnType3.BorderBrush;
             BtnType3.Content = "Type";
-            
 
             //set visibility
             if (BtnType2.Content.ToString() == "Type")
             {
                 BtnType2.Visibility = Visibility.Hidden;
-
             }
             if (BtnType3.Content.ToString() == "Type")
             {
                 BtnType3.Visibility = Visibility.Hidden;
-
             }
             if (BtnType1.Content.ToString() == "Type")
             {
                 BtnType1.Visibility = Visibility.Hidden;
-
             }
-
         }
-
         private void BtnType2_Click(object sender, RoutedEventArgs e)
         {
             BtnType2.Content = BtnType3.Content;
-                BtnType2.Foreground = BtnType3.Foreground;
-                BtnType2.BorderBrush = BtnType3.BorderBrush;
+            BtnType2.Foreground = BtnType3.Foreground;
+            BtnType2.BorderBrush = BtnType3.BorderBrush;
             BtnType3.Content = "Type";
-
-
-
 
             //set visibility
             if (BtnType3.Content.ToString() == "Type")
             {
                 BtnType3.Visibility = Visibility.Hidden;
-
             }
             if (BtnType2.Content.ToString() == "Type")
             {
                 BtnType2.Visibility = Visibility.Hidden;
-
             }
-
         }
-
         private void BtnType3_Click(object sender, RoutedEventArgs e)
         {
             BtnType3.Content = "Type";
             BtnType3.Visibility = Visibility.Hidden;
-
-
         }
         #endregion Type Buttons
 
@@ -260,6 +258,59 @@ namespace ProjectV2
                 multiplier *= DefenderMultiplier(rules, type3, 2);
                 string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
                 TxtResults.Items.Add(result);
+                if (multiplier > 1.0f && multiplier <= 2.0f)
+                {
+                    //change colour of text to red 
+                    TxtResults.Items[TxtResults.Items.Count - 1] = new TextBlock
+                    {
+                        Text = result + " (Weak to)",
+                        Foreground = new SolidColorBrush(Colors.Orange)
+                    };
+
+                }
+                else if (multiplier > 2.0f && multiplier < 4.0f)
+                {
+                    TxtResults.Items[TxtResults.Items.Count - 1] = new TextBlock
+                    {
+                        Text = result + " (Super Weak to)",
+                        Foreground = new SolidColorBrush(Colors.Red)
+                    };
+                }
+                else if (multiplier >= 4.0f)
+                {
+                    TxtResults.Items[TxtResults.Items.Count - 1] = new TextBlock
+                    {
+                        Text = result + " (Extremely Weak to)",
+                        Foreground = new SolidColorBrush(Colors.Magenta),
+                        TextDecorations = TextDecorations.Underline
+                    };
+                }
+                else if (multiplier < 1.0f && multiplier >= 0.5f)
+                {
+                    TxtResults.Items[TxtResults.Items.Count - 1] = new TextBlock
+                    {
+                        Text = result + " (Resists)",
+                        Foreground = new SolidColorBrush(Colors.Green)
+                    };
+                }
+                else if (multiplier < 0.5f && multiplier > 0.25f)
+                {
+                    TxtResults.Items[TxtResults.Items.Count - 1] = new TextBlock
+                    {
+                        Text = result + " (Super Resists)",
+                        Foreground = new SolidColorBrush(Colors.LimeGreen)
+                    };
+                }
+                else if (multiplier <= 0.25f)
+                {
+                    TxtResults.Items[TxtResults.Items.Count - 1] = new TextBlock
+                    {
+                        Text = result + " (Extremely Resists)",
+                        Foreground = new SolidColorBrush(Colors.Navy),
+                        TextDecorations = TextDecorations.Underline
+
+                    };
+                }
             }
         }
 
@@ -491,42 +542,58 @@ namespace ProjectV2
             using (db)
             {
                 var selectedArviva = ArcatLst.SelectedItem;
-
-                var ArvivaSelected = from a in db.Arvivas
-                                     where a.Name == selectedArviva.ToString()
-                                     select a;
-
-                var ArvivaResult = ArvivaSelected.FirstOrDefault();
-
-                #region Selected Arviva Data
-                TxBlArvivaName.Text = ArvivaResult.Name;
-                TxBlArvivaCategory.Text = ArvivaResult.Catgeory;
-                Stat_Hp.Text = "HP " + ArvivaResult.Hp.ToString();
-                Stat_Speed.Text = "SPD " + ArvivaResult.Spd.ToString();
-                Stat_Atk.Text = "ATK " + ArvivaResult.Atk.ToString();
-                Stat_Def.Text = "DEF " + ArvivaResult.Def.ToString();
-                Stat_MAtk.Text = "MATK " + ArvivaResult.MAtk.ToString();
-                Stat_MDef.Text = "MDEF " + ArvivaResult.MDef.ToString();
-                ArcatEntry.Text = ArvivaResult.Description;
-
-                if (ArvivaResult.ImageUrl != null)
+                if (selectedArviva != null)
                 {
-                    #region Directory Traversal
-                    string currentDirectory = Directory.GetCurrentDirectory();
-                    string parentDirectory = Directory.GetParent(currentDirectory).FullName;
-                    string grandParentDirectory = Directory.GetParent(parentDirectory).FullName;
-                    string greatGrandParent = Directory.GetParent(grandParentDirectory).FullName;
-                    #endregion
-                    if (WarpCBx.IsChecked == false)
+
+                    var ArvivaSelected = from a in db.Arvivas
+                                         where a.Name == selectedArviva.ToString()
+                                         select a;
+
+                    var ArvivaResult = ArvivaSelected.FirstOrDefault();
+
+                    #region Selected Arviva Data
+                    TxBlArvivaName.Text = ArvivaResult.Name;
+                    TxBlArvivaCategory.Text = ArvivaResult.Catgeory;
+                    Stat_Hp.Text = "HP " + ArvivaResult.Hp.ToString();
+                    Stat_Speed.Text = "SPD " + ArvivaResult.Spd.ToString();
+                    Stat_Atk.Text = "ATK " + ArvivaResult.Atk.ToString();
+                    Stat_Def.Text = "DEF " + ArvivaResult.Def.ToString();
+                    Stat_MAtk.Text = "MATK " + ArvivaResult.MAtk.ToString();
+                    Stat_MDef.Text = "MDEF " + ArvivaResult.MDef.ToString();
+                    ArcatEntry.Text = ArvivaResult.Description.ToString();
+
+                    if (ArvivaResult.ImageUrl != null)
                     {
-                        string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl + ".png";
-                        ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
+                        #region Directory Traversal
+                        string currentDirectory = Directory.GetCurrentDirectory();
+                        string parentDirectory = Directory.GetParent(currentDirectory).FullName;
+                        string grandParentDirectory = Directory.GetParent(parentDirectory).FullName;
+                        string greatGrandParent = Directory.GetParent(grandParentDirectory).FullName;
+                        #endregion
+                        if (WarpCBx.IsChecked == false)
+                        {
+                            string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl + ".png";
+                            ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
+                        }
+                        else
+                        {
+                            string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl + "warp.png";
+                            ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
+                        }
                     }
-                    else
-                    {
-                        string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl + "warp.png";
-                        ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
-                    }
+                }
+                else if (selectedArviva == null)
+                {
+                    TxBlArvivaName.Text = string.Empty;
+                    TxBlArvivaCategory.Text = string.Empty;
+                    Stat_Hp.Text = "HP:";
+                    Stat_Speed.Text = "SPD:";
+                    Stat_Atk.Text = "ATK:";
+                    Stat_Def.Text = "DEF:";
+                    Stat_MAtk.Text = "MATK:";
+                    Stat_MDef.Text = "MDEF:";
+                    ArcatEntry.Text = string.Empty;
+                    ImgArviva.Source = null;
                 }
                 #endregion
             }

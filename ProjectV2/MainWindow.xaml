@@ -38,9 +38,9 @@
                 <Button x:Name="BtnVita" Content="Vita" Margin="11,264,25,0" VerticalAlignment="Top" Height="30" FontSize="14" Background="#FF0AFDAA" BorderBrush="#FF07D28D" Foreground="Black" Click="Btn_Click" Grid.Column="1"/>
                 <Button x:Name="BtnType1" Content="Type" Margin="30,5,16,0" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType1_Click" Grid.Row="1" Height="32" VerticalAlignment="Top"/>
                 <Button x:Name="BtnType2" Content="Type" Margin="11,5,25,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType2_Click" Height="32" Grid.Row="1" Grid.Column="1"/>
-                <Button x:Name="BtnType3" Content="Type" Margin="22,5,59,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType3_Click" Height="32" Grid.Row="1" Grid.Column="2"/>
-                <Button x:Name="BtnCalculate" Content="Calculate" Margin="38,33,38,0" VerticalAlignment="Top" Click="BtnCalculate_Click" Height="32" Grid.Column="2"/>
-                <ListBox x:Name="TxtResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="36,10,36,10" BorderBrush="Black" Background="#FFECECEC" Loaded="TxtResults_Loaded" Grid.Column="3" Grid.RowSpan="2"/>
+                <Button x:Name="BtnType3" Content="Type" Margin="10,5,71,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="White" Background="White" Click="BtnType3_Click" Height="32" Grid.Row="1" Grid.Column="2"/>
+                <Button x:Name="BtnCalculate" Content="Calculate" Margin="33,33,33,0" VerticalAlignment="Top" Click="BtnCalculate_Click" Height="32" Grid.Column="2"/>
+                <ListBox x:Name="TxtResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="36,10,36,10" BorderBrush="Black" Background="#FFECECEC" Loaded="TxtResults_Loaded" Grid.Column="3" Grid.RowSpan="2" FontSize="18"/>
 
             </Grid>
 
@@ -52,13 +52,17 @@
                 </StackPanel>
             </TabItem.Header>
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="154*"/>
+                    <RowDefinition Height="39*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="253*"/>
                     <ColumnDefinition Width="187*"/>
                     <ColumnDefinition Width="367*"/>
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="ArcatLst" Margin="10,23,10,0" Background="#FFECECEC" Height="273" VerticalAlignment="Top"/>
-                <Image x:Name="ImgArviva" Height="163" Margin="10,23,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" Grid.Column="1"/>
+                <ListBox x:Name="ArcatLst" Margin="10,23,10,12" Background="#FFECECEC"/>
+                <Image x:Name="ImgArviva" Margin="9,52,8,92" Grid.Column="1"/>
                 <Button x:Name="BtnBack" Content="&lt;&lt;&lt;" Margin="1,23,0,0" VerticalAlignment="Top" Height="44" Background="#FF673AB7" Click="BtnBack_Click" Grid.Column="2" HorizontalAlignment="Left" Width="50"/>
                 <Button x:Name="BtnForward" Content="&gt;&gt;" Margin="0,23,30,0" VerticalAlignment="Top" Height="44" Click="BtnForward_Click" Grid.Column="2" HorizontalAlignment="Right" Width="50"/>
                 <TextBlock x:Name="TxBlArvivaName" Margin="100,23,100,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="44" Background="#FFECECEC" Grid.Column="2" FontSize="24" TextAlignment="Center"/>
@@ -69,9 +73,9 @@
                 <TextBlock x:Name="Stat_MAtk" HorizontalAlignment="Right" Margin="0,156,103,0" TextWrapping="Wrap" Text="MATK" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="2"/>
                 <TextBlock x:Name="Stat_Def" HorizontalAlignment="Left" Margin="100,193,0,0" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="2"/>
                 <TextBlock x:Name="Stat_MDef" HorizontalAlignment="Right" Margin="0,193,103,0" TextWrapping="Wrap" Text="MDEF" VerticalAlignment="Top" Background="#FFECECEC" Height="26" Width="70" Grid.Column="2"/>
-                <TextBlock x:Name="ArcatEntry" Margin="53,240,17,0" TextWrapping="Wrap" Text="Entry:" VerticalAlignment="Top" Background="#FFECECEC" Height="112" Grid.Column="1" Grid.ColumnSpan="2"/>
-                <Button x:Name="BtnData" Content="Data" Margin="20,310,29,0" VerticalAlignment="Top" Height="42" Background="#FF673AB7" Click="BtnData_Click"/>
-                <CheckBox x:Name="WarpCBx" Content="Warped" HorizontalAlignment="Left" Margin="3,199,0,0" VerticalAlignment="Top" Width="108" Grid.Column="1" Height="29"/>
+                <TextBlock x:Name="ArcatEntry" Margin="53,0,17,21" TextWrapping="Wrap" Text="Entry:" Background="#FFECECEC" Grid.Column="1" Grid.ColumnSpan="2" Height="117" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
+                <Button x:Name="BtnData" Content="Load Entry" Margin="24,35,25,0" Background="#FF673AB7" Click="BtnData_Click" Grid.Row="1" Height="32" VerticalAlignment="Top"/>
+                <CheckBox x:Name="WarpCBx" Content="Warped" Margin="0,1,0,0" RenderTransformOrigin="0.639,-0.931" Height="29" VerticalAlignment="Top" HorizontalAlignment="Center" Width="108" Grid.Row="1"/>
             </Grid>
         </TabItem>
 
@@ -91,7 +95,7 @@
                     <RowDefinition Height="167*"/>
                     <RowDefinition Height="219*"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="SpikesMain" Content="Spikes" Margin="43,0,0,0" VerticalAlignment="Center" Height="139" BorderBrush="Black" Foreground="Black" FontSize="36" Click="SpikesMain_Click" HorizontalAlignment="Left" Width="150">
+                <Button x:Name="SpikesMain" Content="Spikes" VerticalAlignment="Center" Height="139" BorderBrush="Black" Foreground="Black" FontSize="36" Click="SpikesMain_Click" HorizontalAlignment="Center" Width="150">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/spikes.jpg"/>
                     </Button.Background>
@@ -106,71 +110,71 @@
                         <ImageBrush ImageSource="/content/Sun.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnTerraSpikes" Content="Button" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnTerraSpikes_Click" Grid.Row="1">
+                <Button x:Name="BtnTerraSpikes" Content="Button" HorizontalAlignment="Right" Margin="0,16,151,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnTerraSpikes_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/spikes.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnGlacialSpikes" Content="Button" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnGlacialSpikes_Click" Grid.Row="1">
+                <Button x:Name="BtnGlacialSpikes" Content="Button" HorizontalAlignment="Right" Margin="0,110,151,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnGlacialSpikes_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/Icecubes.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnMetalSpikes" Content="Button" HorizontalAlignment="Left" Margin="104,16,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnMetalSpikes_Click" Grid.Row="1">
+                <Button x:Name="BtnMetalSpikes" Content="Button" HorizontalAlignment="Right" Margin="0,16,57,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnMetalSpikes_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/metalspikes.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnNoxiousSpikes" Content="Button" HorizontalAlignment="Left" Margin="104,110,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnNoxiousSpikes_Click" Grid.Row="1">
+                <Button x:Name="BtnNoxiousSpikes" Content="Button" HorizontalAlignment="Right" Margin="0,110,57,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnNoxiousSpikes_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/toxicspikes.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnPyroWeather" Content="Button" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnPyroWeather_Click" Grid.Row="1">
+                <Button x:Name="BtnPyroWeather" Content="Button" HorizontalAlignment="Right" Margin="0,16,151,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnPyroWeather_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/Sun.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnVephyrWeather" Content="Button" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnVephyrWeather_Click" Grid.Row="1">
+                <Button x:Name="BtnVephyrWeather" Content="Button" HorizontalAlignment="Right" Margin="0,110,151,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnVephyrWeather_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/Wind.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnAquaWeather" Content="Button" HorizontalAlignment="Left" Margin="104,16,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnAquaWeather_Click" Grid.Row="1">
+                <Button x:Name="BtnAquaWeather" Content="Button" HorizontalAlignment="Right" Margin="0,16,57,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnAquaWeather_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/Rain.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnElectroWeather" Content="Button" HorizontalAlignment="Left" Margin="104,110,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnElectroWeather_Click" Grid.Row="1">
+                <Button x:Name="BtnElectroWeather" Content="Button" HorizontalAlignment="Right" Margin="0,110,57,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnElectroWeather_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/StormCloud.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnFloraTendrils" Content="Button" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnFloraTendrils_Click" Grid.Row="1">
+                <Button x:Name="BtnFloraTendrils" Content="Button" HorizontalAlignment="Right" Margin="0,16,152,0" VerticalAlignment="Top" Height="89" Width="88" Foreground="{x:Null}" Click="BtnFloraTendrils_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/Vines.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnSpiritTendrils" Content="Button" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnSpiritTendrils_Click" Grid.Row="1">
+                <Button x:Name="BtnSpiritTendrils" Content="Button" HorizontalAlignment="Right" Margin="0,110,152,0" VerticalAlignment="Top" Height="89" Width="88" Foreground="{x:Null}" Click="BtnSpiritTendrils_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/graspingsouls.jpg"/>
                     </Button.Background>
                 </Button>
                 <Button
-                Margin="104,16,0,0" VerticalAlignment="Top" x:Name="BtnLumenTendrils" Height="89" Foreground="{x:Null}" Content="Button" Click="BtnLumenTendrils_Click" Grid.Row="1" HorizontalAlignment="Left" Width="89">
+                Margin="0,16,58,0" VerticalAlignment="Top" x:Name="BtnLumenTendrils" Height="89" Foreground="{x:Null}" Content="Button" Click="BtnLumenTendrils_Click" Grid.Row="1" HorizontalAlignment="Right" Width="88">
                     <Button.Background
                 >
                         <ImageBrush
                 ImageSource="/content/vinelights.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BtnVitaTendrils" Content="Button" HorizontalAlignment="Left" Margin="104,110,0,0" VerticalAlignment="Top" Height="89" Width="89" Foreground="{x:Null}" Click="BtnVitaTendrils_Click" Grid.Row="1">
+                <Button x:Name="BtnVitaTendrils" Content="Button" HorizontalAlignment="Right" Margin="0,110,58,0" VerticalAlignment="Top" Height="89" Width="88" Foreground="{x:Null}" Click="BtnVitaTendrils_Click" Grid.Row="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/content/mycelium.jpg"/>
                     </Button.Background>
                 </Button>
                 <Image x:Name="ImgHazard" Height="139" Margin="10,39,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="144"/>
-                <TextBlock x:Name="TxBlHazards" Margin="175,39,26,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="173" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="TxBlHazards" Margin="175,26,26,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="173" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15"/>
             </Grid>
         </TabItem>
     </TabControl>
