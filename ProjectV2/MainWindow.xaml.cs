@@ -443,7 +443,7 @@ namespace ProjectV2
             {
                 ImgHazard.Source = brush.ImageSource;
             }
-            TxBlHazards.Text = "Strong Winds\n\nAffects whole board.\nBoosts Vephyr moves by 1.5x.\nRemoves hazards from the user's side and makes hazards unable to be set on their side until Strong Winds is over.";
+            TxBlHazards.Text = "Strong Winds\n\nAffects whole board.\nBoosts Zephyr moves by 1.5x.\nRemoves hazards from the user's side and makes hazards unable to be set on their side until Strong Winds is over.";
         }
 
         private void BtnElectroWeather_Click(object sender, RoutedEventArgs e)
