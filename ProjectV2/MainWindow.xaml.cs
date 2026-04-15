@@ -441,31 +441,7 @@ namespace ProjectV2
         #endregion
 
         #region Arcat Page
-        #region Profile Focus [Possibly remove]
-        private void UserName_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (UserName.Text == "Username")
-                UserName.Text = null;
-        }
-
-        private void UserName_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(UserName.Text))
-                UserName.Text = "Username";
-        }
-
-        private void UserPassword_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (UserPassword.Text == "Password")
-                UserPassword.Text = null;
-        }
-
-        private void UserPassword_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(UserPassword.Text))
-                UserPassword.Text = "Password";
-        }
-        #endregion
+       
 
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -507,7 +483,7 @@ namespace ProjectV2
         }
 
 
-        #endregion
+        
 
         private void BtnData_Click(object sender, RoutedEventArgs e)
         {
@@ -520,7 +496,10 @@ namespace ProjectV2
                                      where a.Name == selectedArviva.ToString()
                                      select a;
 
+
                 var ArvivaResult = ArvivaSelected.FirstOrDefault();
+
+                #region Selected Arviva Data
                 TxBlArvivaName.Text = ArvivaResult.Name;
                 TxBlArvivaCategory.Text = ArvivaResult.Catgeory;
                 Stat_Hp.Text = "HP " + ArvivaResult.Hp.ToString();
@@ -532,19 +511,19 @@ namespace ProjectV2
                 ArcatEntry.Text = ArvivaResult.Description;
                 if (ArvivaResult.ImageUrl != null)
                 {
-                    //get current directory
+                    #region Directory Traversal
                     string currentDirectory = Directory.GetCurrentDirectory();
                     string parentDirectory = Directory.GetParent(currentDirectory).FullName;
                     string grandParentDirectory = Directory.GetParent(parentDirectory).FullName;
                     string greatGrandParent = Directory.GetParent(grandParentDirectory).FullName;
-
-
-
+                    #endregion
                     string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl;
-                    ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Relative));
+                    ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
 
-                    //C:\Users\NIANOWAK-STUDENT\OneDrive - Atlantic TU\Yr2\sem2\OOD\Project\ProjectV2AndData\ProjectV2\content
                 }
+                #endregion
+                #endregion
+
 
             }
         }
