@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -496,7 +498,7 @@ namespace ProjectV2
                     ArcatLst.SelectedIndex = currentIndex + 1;
                     BtnData_Click(sender, e);
                 }
-                if (currentIndex == ArcatLst.Items.Count -1)
+                if (currentIndex == ArcatLst.Items.Count - 1)
                 {
                     ArcatLst.SelectedIndex = 0;
                     BtnData_Click(sender, e);
@@ -529,8 +531,20 @@ namespace ProjectV2
                 Stat_MDef.Text = "MDEF " + ArvivaResult.MDef.ToString();
                 ArcatEntry.Text = ArvivaResult.Description;
                 if (ArvivaResult.ImageUrl != null)
-                ImgArviva.Source = new BitmapImage(new Uri(ArvivaResult.ImageUrl, UriKind.RelativeOrAbsolute));
+                {
+                    //get current directory
+                    string currentDirectory = Directory.GetCurrentDirectory();
+                    string parentDirectory = Directory.GetParent(currentDirectory).FullName;
+                    string grandParentDirectory = Directory.GetParent(parentDirectory).FullName;
+                    string greatGrandParent = Directory.GetParent(grandParentDirectory).FullName;
 
+
+
+                    string path = @$"{greatGrandParent}\content\" + ArvivaResult.ImageUrl;
+                    ImgArviva.Source = new BitmapImage(new Uri(path, UriKind.Relative));
+
+                    //C:\Users\NIANOWAK-STUDENT\OneDrive - Atlantic TU\Yr2\sem2\OOD\Project\ProjectV2AndData\ProjectV2\content
+                }
 
             }
         }

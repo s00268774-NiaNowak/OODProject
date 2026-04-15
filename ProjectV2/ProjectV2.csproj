@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="content\Woroptr.png" />
     <None Remove="graspingsouls.jpg" />
     <None Remove="Icecubes.jpg" />
     <None Remove="metalspikes.jpg" />
@@ -20,6 +21,12 @@
     <None Remove="toxicspikes.jpg" />
     <None Remove="vinelights.jpg" />
     <None Remove="Wind.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="content\Woroptr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

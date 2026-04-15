@@ -63,3 +63,4 @@ C:\Users\NIANOWAK-STUDENT\OneDrive - Atlantic TU\Yr2\sem2\OOD\Project\ProjectV2A
 C:\Users\NIANOWAK-STUDENT\OneDrive - Atlantic TU\Yr2\sem2\OOD\Project\ProjectV2AndData\DataManagement\obj\Debug\net8.0-windows\DataManagement.pdb
 C:\Users\NIANOWAK-STUDENT\OneDrive - Atlantic TU\Yr2\sem2\OOD\Project\ProjectV2AndData\DataManagement\obj\Debug\net8.0-windows\DataManagement.genruntimeconfig.cache
 C:\Users\NIANOWAK-STUDENT\OneDrive - Atlantic TU\Yr2\sem2\OOD\Project\ProjectV2AndData\DataManagement\obj\Debug\net8.0-windows\ref\DataManagement.dll
+C:\Users\NIANOWAK-STUDENT\OneDrive - Atlantic TU\Yr2\sem2\OOD\Project\ProjectV2AndData\DataManagement\bin\Debug\net8.0-windows\content\Woroptr.png
