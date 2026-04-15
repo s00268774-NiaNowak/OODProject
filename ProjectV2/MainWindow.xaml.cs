@@ -161,7 +161,6 @@ namespace ProjectV2
         #region Element Buttons
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            //determine what button was clicked
             Button selectedButton = sender as Button;
             if (selectedButton != null)
             {
@@ -258,9 +257,10 @@ namespace ProjectV2
                 multiplier *= DefenderMultiplier(rules, type3, 2);
                 string result = $"{TypeName(attackerType)}: x{multiplier:F2}";
                 TxtResults.Items.Add(result);
+
+                // Add color coding and information based on multiplier
                 if (multiplier > 1.0f && multiplier <= 2.0f)
                 {
-                    //change colour of text to red 
                     TxtResults.Items[TxtResults.Items.Count - 1] = new TextBlock
                     {
                         Text = result + " (Weak to)",
@@ -321,6 +321,7 @@ namespace ProjectV2
         #endregion
 
         #region Hazards Page
+        //Buttons to display Hazard Categories
         private void SpikesMain_Click(object sender, RoutedEventArgs e)
         {
             #region Spikes
@@ -380,6 +381,7 @@ namespace ProjectV2
             BtnVephyrWeather.Visibility = Visibility.Hidden;
             #endregion
         }
+        //Buttons displaying Hazard Information
         #region TendrilBtns
         private void BtnFloraTendrils_Click(object sender, RoutedEventArgs e)
         {
